@@ -1,0 +1,24 @@
+name: Default API Rate Limits
+description: >-
+  Eventzilla's public API documentation does not explicitly publish specific
+  rate limit thresholds. The API supports paginated responses using offset
+  and limit query parameters, with a default page size of 20 records and
+  configurable limits per request. API keys are generated per account via
+  Settings > App Management. For production rate limit details, contact
+  Eventzilla support directly.
+url: https://developer.eventzilla.net/docs/
+limits:
+  - name: Pagination default
+    description: Default number of records returned per API response
+    quota: 20
+    unit: records per request
+  - name: Pagination offset
+    description: Records to skip for paginated results; default is 0
+    quota: 0
+    unit: records offset default
+notes: >-
+  No explicit rate limit (requests per minute or per day) is documented in
+  the public API reference as of June 2026. The API enforces HTTPS-only
+  access and requires a valid x-api-key header on all requests. Developers
+  should implement exponential backoff and handle HTTP 429 responses
+  defensively.

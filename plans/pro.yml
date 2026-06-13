@@ -1,0 +1,20 @@
+name: Pro
+description: >-
+  Mid-tier plan designed for growing events that need expanded functionality.
+  Platform fee is 1.9% plus $1.50 per paid registration. Adds unlimited paid
+  ticket types, customizable registration forms, seating plans, and discount
+  codes beyond what the Basic plan offers.
+url: https://www.eventzilla.net/pricing/
+price: 1.9% + 1.50
+unit: per paid registration
+features:
+  - Unlimited events
+  - Unlimited free registrations
+  - Unlimited paid ticket types
+  - Customizable registration forms
+  - Seating plans
+  - Discount codes and promo codes
+  - Advanced attendee management
+  - Email marketing tools
+  - Online payment processing
+  - Standard support

@@ -1,0 +1,17 @@
+name: Basic
+description: >-
+  Entry-level plan for small events and first-time organizers. Includes
+  unlimited events and unlimited free registrations, with one paid ticket
+  type. Platform fee is $1.50 per paid registration. No setup fees or
+  monthly fees apply.
+url: https://www.eventzilla.net/pricing/
+price: 1.50
+unit: per paid registration
+features:
+  - Unlimited events
+  - Unlimited free registrations
+  - 1 paid ticket type
+  - Basic registration forms
+  - Online payment processing
+  - Email confirmations
+  - Standard support

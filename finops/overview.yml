@@ -1,0 +1,41 @@
+name: Eventzilla FinOps Overview
+description: >-
+  Eventzilla uses a consumption-based pricing model where platform fees are
+  charged per paid registration. Free events incur no platform fees on any
+  plan. Fees can be passed through to attendees or absorbed by the organizer.
+  The Unlimited (Enterprise) plan offers cost predictability via a flat annual
+  fee regardless of ticket volume, making it suitable for high-frequency event
+  producers. Payment processing fees from the chosen payment provider are
+  separate from Eventzilla platform fees.
+url: https://www.eventzilla.net/pricing/
+cost_model: consumption
+billing_cycle: per-registration or annual
+currency:
+  - USD
+  - GBP
+  - AUD
+  - CAD
+  - EUR
+plans:
+  - name: Basic
+    platform_fee: "$1.50 per paid registration"
+    monthly_fee: none
+    setup_fee: none
+  - name: Pro
+    platform_fee: "1.9% + $1.50 per paid registration"
+    monthly_fee: none
+    setup_fee: none
+  - name: Plus
+    platform_fee: "2.9% + $1.50 per paid registration"
+    monthly_fee: none
+    setup_fee: none
+  - name: Unlimited
+    platform_fee: none
+    annual_fee: "Starting at $5,999/year"
+    setup_fee: none
+notes: >-
+  All platform fees are in addition to third-party payment processor fees,
+  which vary by provider (Stripe, PayPal, etc.). Organizers can configure
+  whether platform fees are passed to attendees or deducted from revenue.
+  Free registrations (zero-cost tickets) are included on all plans without
+  any per-registration platform fee.

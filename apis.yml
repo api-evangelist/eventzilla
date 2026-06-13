@@ -1,0 +1,69 @@
+name: Eventzilla
+description: >-
+  Eventzilla is an event registration and ticketing platform that provides
+  a REST API for managing events, ticket types, registrations, discounts,
+  and attendee check-in workflows. The API uses predictable, resource-oriented
+  URLs organized around the JSON format, enabling integrations for event
+  creation, attendee management, order processing, and check-in operations.
+image: https://www.eventzilla.net/favicon.ico
+tags:
+  - Events
+  - Ticketing
+  - Registration
+  - Attendees
+  - Event Management
+url: https://raw.githubusercontent.com/api-evangelist/eventzilla/refs/heads/main/apis.yml
+specificationVersion: "0.19"
+apis:
+  - name: Eventzilla API
+    description: >-
+      The Eventzilla REST API provides access to event management operations
+      including listing and retrieving events, managing ticket categories,
+      processing registrations and orders, managing attendees, performing
+      check-ins, and handling checkout workflows. Authentication is via an
+      API key passed in the x-api-key request header.
+    image: https://www.eventzilla.net/favicon.ico
+    humanURL: https://developer.eventzilla.net/docs/
+    baseURL: https://www.eventzillaapi.net/api/v2/
+    tags:
+      - Events
+      - Ticketing
+      - Registrations
+      - Attendees
+      - Check-in
+      - Orders
+    properties:
+      - type: Documentation
+        url: https://developer.eventzilla.net/docs/
+      - type: OpenAPI
+        url: https://developer.eventzilla.net/docs/
+      - type: Authentication
+        url: https://developer.eventzilla.net/docs/
+    contact:
+      - FN: Eventzilla Support
+        email: support@eventzilla.net
+        url: https://community.eventzilla.net/
+common:
+  - type: Portal
+    url: https://developer.eventzilla.net/
+  - type: Documentation
+    url: https://developer.eventzilla.net/docs/
+  - type: Pricing
+    url: https://www.eventzilla.net/pricing/
+  - type: Blog
+    url: https://www.eventzilla.net/blog/
+  - type: Support
+    url: https://community.eventzilla.net/
+  - type: TermsOfService
+    url: https://www.eventzilla.net/terms-conditions/
+  - type: PrivacyPolicy
+    url: https://www.eventzilla.net/privacy-policy/
+  - type: Login
+    url: https://app.eventzilla.net/us/login
+  - type: SignUp
+    url: https://www.eventzilla.net/
+  - type: About
+    url: https://www.eventzilla.net/about/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
