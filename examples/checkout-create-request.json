@@ -1,0 +1,15 @@
+{
+  "eventid": 100123,
+  "eventdateid": 200456,
+  "ticket_types": [
+    {
+      "ticket_type_id": 301,
+      "quantity": 2
+    },
+    {
+      "ticket_type_id": 302,
+      "quantity": 1
+    }
+  ],
+  "discount_code": "EARLYBIRD20"
+}

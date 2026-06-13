@@ -36,7 +36,7 @@ apis:
       - type: Documentation
         url: https://developer.eventzilla.net/docs/
       - type: OpenAPI
-        url: https://developer.eventzilla.net/docs/
+        url: https://raw.githubusercontent.com/api-evangelist/eventzilla/refs/heads/main/openapi/openapi.yml
       - type: Authentication
         url: https://developer.eventzilla.net/docs/
     contact:
@@ -64,6 +64,7 @@ common:
     url: https://www.eventzilla.net/
   - type: About
     url: https://www.eventzilla.net/about/
+modified: "2026-06-13"
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

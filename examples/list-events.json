@@ -1,0 +1,38 @@
+{
+  "pagination": [
+    {
+      "offset": 0,
+      "limit": 20,
+      "total": 2
+    }
+  ],
+  "events": [
+    {
+      "id": 100123,
+      "title": "Annual Tech Conference 2026",
+      "description": "A premier technology conference featuring keynotes, workshops, and networking.",
+      "currency": "USD",
+      "start_date": "2026-09-15T09:00:00Z",
+      "start_time": "9:00 AM",
+      "end_date": "2026-09-17T18:00:00Z",
+      "end_time": "6:00 PM",
+      "time_zone": "America/New_York",
+      "timezone_code": "EDT",
+      "utc_offset": "-04:00",
+      "tickets_sold": 450,
+      "tickets_total": 1000,
+      "status": "live",
+      "show_remaining": true,
+      "twitter_hashtag": "TechConf2026",
+      "invite_code": "",
+      "url": "https://www.eventzilla.net/web/event?eventid=100123",
+      "logo_url": "https://www.eventzilla.net/images/events/100123/logo.png",
+      "bgimage_url": "https://www.eventzilla.net/images/events/100123/bg.png",
+      "venue": "Javits Center, 429 11th Ave, New York, NY 10001",
+      "dateid": 200456,
+      "categories": "Technology",
+      "language": "en",
+      "description_html": "<p>A premier technology conference featuring keynotes, workshops, and networking.</p>"
+    }
+  ]
+}

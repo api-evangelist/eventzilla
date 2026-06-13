@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://developer.eventzilla.net/schemas/transaction",
+  "title": "Transaction",
+  "description": "A financial transaction for an Eventzilla event order.",
+  "type": "object",
+  "properties": {
+    "refno": { "type": "string", "description": "Transaction reference number" },
+    "transaction_ref": { "type": "string", "description": "Transaction reference number (alternate field)" },
+    "checkout_id": { "type": "number", "description": "Checkout session identifier" },
+    "transaction_date": { "type": "string", "description": "Date and time of transaction" },
+    "transaction_amount": { "type": ["number", "string"], "description": "Total transaction amount" },
+    "transaction_tax": { "type": "number", "description": "Tax amount" },
+    "transaction_discount": { "type": "number", "description": "Discount amount" },
+    "eventzilla_fee": { "type": "number", "description": "Eventzilla platform fee" },
+    "transaction_status": { "type": "string", "description": "Current transaction status" },
+    "tickets_in_transaction": { "type": "number", "description": "Number of tickets in the transaction" },
+    "event_date": { "type": "string", "format": "date-time", "description": "Date of the event" },
+    "event_id": { "type": "number", "description": "Associated event identifier" },
+    "user_id": { "type": "number", "description": "Organizer user identifier" },
+    "title": { "type": "string", "description": "Event title" },
+    "email": { "type": "string", "format": "email", "description": "Buyer email address" },
+    "buyer_first_name": { "type": "string", "description": "Buyer first name" },
+    "buyer_last_name": { "type": "string", "description": "Buyer last name" },
+    "promo_code": { "type": "string", "description": "Promotional code used" },
+    "payment_type": { "type": "string", "description": "Payment method used" },
+    "comments": { "type": "string", "description": "Order comments" }
+  }
+}

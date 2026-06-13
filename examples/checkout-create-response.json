@@ -1,0 +1,26 @@
+{
+  "checkout_id": 9988,
+  "transaction_ref": "TXN-20260615-9988",
+  "transaction_total": 399.00,
+  "transaction_tax": 31.92,
+  "transaction_discount": 80.00,
+  "eventzilla_fee": 11.97,
+  "currency": "USD",
+  "tickets": [
+    {
+      "ticket_price_id": 5001,
+      "ticket_type_id": 301,
+      "ticket_type_name": "General Admission"
+    },
+    {
+      "ticket_price_id": 5002,
+      "ticket_type_id": 301,
+      "ticket_type_name": "General Admission"
+    },
+    {
+      "ticket_price_id": 5003,
+      "ticket_type_id": 302,
+      "ticket_type_name": "VIP Pass"
+    }
+  ]
+}

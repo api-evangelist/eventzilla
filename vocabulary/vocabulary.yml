@@ -1,0 +1,60 @@
+vocabulary:
+  - term: event
+    definition: >-
+      A scheduled occurrence that attendees can register for, including concerts,
+      conferences, festivals, and other gatherings managed through Eventzilla.
+  - term: eventid
+    definition: Unique numeric identifier assigned to an event by Eventzilla.
+  - term: dateid
+    definition: >-
+      Unique identifier for a specific date occurrence of a recurring or multi-date event.
+  - term: ticket
+    definition: >-
+      A purchasable admission type for an event, which may have a price, quantity limit,
+      sales window, and optional access restrictions.
+  - term: ticket_type
+    definition: Classification or category of a ticket (e.g., General Admission, VIP).
+  - term: bar_code
+    definition: Unique barcode string assigned to each individual attendee for event check-in.
+  - term: attendee
+    definition: >-
+      An individual registered to attend an event, associated with a ticket purchase
+      and holding a unique barcode for entry.
+  - term: checkout
+    definition: >-
+      The multi-step workflow for purchasing event tickets, including session creation,
+      buyer detail collection, and payment confirmation.
+  - term: checkout_id
+    definition: Unique numeric identifier for a checkout session.
+  - term: transaction
+    definition: >-
+      A completed or pending financial record representing a ticket purchase,
+      including amounts, fees, taxes, and order status.
+  - term: transaction_ref
+    definition: Alphanumeric reference string identifying a transaction.
+  - term: refno
+    definition: Alternative field name for transaction reference number.
+  - term: eventzilla_fee
+    definition: Platform service fee charged by Eventzilla on each transaction.
+  - term: checkin
+    definition: The process of marking an attendee as present at an event using their barcode.
+  - term: togglesales
+    definition: The operation to publish (enable sales) or unpublish (disable sales) an event.
+  - term: organizer
+    definition: A primary Eventzilla account holder who creates and manages events.
+  - term: sub-organizer
+    definition: A secondary user account with limited permissions under an organizer.
+  - term: promo_code
+    definition: A discount code entered during checkout to reduce the ticket price.
+  - term: discount_code
+    definition: Synonym for promo_code used in checkout creation requests.
+  - term: payment_id
+    definition: Identifier for a payment method option available during checkout.
+  - term: question
+    definition: >-
+      A custom registration question posed to ticket buyers or attendees during checkout,
+      which may be free-text, multiple choice, or include conditional sub-questions.
+  - term: is_attended
+    definition: Field indicating whether an attendee has been checked in at the event.
+  - term: x-api-key
+    definition: HTTP request header used to authenticate calls to the Eventzilla API.

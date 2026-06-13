@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://developer.eventzilla.net/schemas/attendee",
+  "title": "Attendee",
+  "description": "An attendee registered for an Eventzilla event.",
+  "type": "object",
+  "properties": {
+    "id": { "type": ["number", "string"], "description": "Unique attendee identifier" },
+    "first_name": { "type": "string", "description": "Attendee first name" },
+    "last_name": { "type": "string", "description": "Attendee last name" },
+    "email": { "type": "string", "format": "email", "description": "Attendee email address" },
+    "ticket_type": { "type": "string", "description": "Ticket type name" },
+    "bar_code": { "type": "string", "description": "Attendee barcode for check-in" },
+    "is_attended": { "type": "string", "description": "Check-in status" },
+    "questions": {
+      "type": "array",
+      "description": "Registration question answers",
+      "items": {
+        "type": "object",
+        "properties": {
+          "questions": { "type": "string", "description": "Question text" },
+          "answer": { "type": "string", "description": "Answer text" }
+        }
+      }
+    },
+    "transaction_ref": { "type": "string", "description": "Transaction reference number" },
+    "refno": { "type": "string", "description": "Transaction reference number (alternate field)" },
+    "transaction_date": { "type": "string", "description": "Date of transaction" },
+    "transaction_amount": { "type": ["number", "string"], "description": "Transaction amount" },
+    "transaction_status": { "type": "string", "description": "Transaction status" },
+    "event_id": { "type": "number", "description": "Associated event identifier" },
+    "event_date": { "type": "string", "format": "date-time", "description": "Event date" },
+    "title": { "type": "string", "description": "Event title" },
+    "user_id": { "type": "number", "description": "Organizer user identifier" },
+    "buyer_first_name": { "type": "string", "description": "Buyer first name" },
+    "buyer_last_name": { "type": "string", "description": "Buyer last name" },
+    "payment_type": { "type": "string", "description": "Payment method used" }
+  }
+}

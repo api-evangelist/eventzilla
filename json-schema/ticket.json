@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://developer.eventzilla.net/schemas/ticket",
+  "title": "Ticket",
+  "description": "A ticket type for an Eventzilla event.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "number", "description": "Unique ticket type identifier" },
+    "title": { "type": "string", "description": "Ticket type name" },
+    "description": { "type": "string", "description": "Ticket type description" },
+    "price": { "type": "string", "description": "Ticket price as a string" },
+    "quantity_total": { "type": "string", "description": "Total ticket quantity available" },
+    "ticket_type": { "type": "string", "description": "Type classification of the ticket" },
+    "is_visible": { "type": "boolean", "description": "Whether the ticket is visible to buyers" },
+    "boxoffice_only": { "type": "boolean", "description": "Whether ticket is sold only at the box office" },
+    "limit_minimum": { "type": "string", "description": "Minimum tickets per order" },
+    "limit_maximum": { "type": "string", "description": "Maximum tickets per order" },
+    "sales_start_date": { "type": "string", "description": "Date when sales start" },
+    "sales_start_time": { "type": "string", "format": "date-time", "description": "Datetime when sales start" },
+    "sales_end_date": { "type": "string", "format": "date-time", "description": "Datetime when sales end" },
+    "sales_end_time": { "type": "string", "description": "Time when sales end" },
+    "group_discount": { "type": "string", "description": "Whether group discount is enabled" },
+    "group_percentage": { "type": "string", "description": "Group discount percentage" },
+    "group_price": { "type": "string", "description": "Group discount price" },
+    "additional_instructions": { "type": "string", "description": "Additional instructions for ticket buyers" },
+    "unlock_code": { "type": "string", "description": "Code needed to unlock hidden ticket" },
+    "allow_partial_payment": { "type": "boolean", "description": "Whether partial payment is allowed" },
+    "partial_payment_installments": { "type": "string", "description": "Number of payment installments" },
+    "partial_payment_frequency": { "type": "string", "description": "Frequency of payment installments" },
+    "partial_payment_amount": { "type": "string", "description": "Amount per installment" }
+  }
+}

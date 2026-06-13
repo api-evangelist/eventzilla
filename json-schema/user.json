@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://developer.eventzilla.net/schemas/user",
+  "title": "User",
+  "description": "An Eventzilla organizer or sub-organizer user.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "number", "description": "Unique user identifier" },
+    "username": { "type": "string", "description": "Username" },
+    "first_name": { "type": "string", "description": "User first name" },
+    "last_name": { "type": "string", "description": "User last name" },
+    "company": { "type": "string", "description": "Company or organization name" },
+    "email": { "type": "string", "format": "email", "description": "Email address" },
+    "timezone": { "type": "string", "description": "IANA timezone name" },
+    "website": { "type": "string", "format": "uri", "description": "Website URL" },
+    "phone_primary": { "type": "string", "description": "Primary phone number" },
+    "avatar_url": { "type": "string", "format": "uri", "description": "Profile avatar image URL" },
+    "facebook_id": { "type": "string", "description": "Facebook social ID" },
+    "twitter_id": { "type": "string", "description": "Twitter social ID" },
+    "last_seen": { "type": "string", "description": "Timestamp of last activity" },
+    "user_type": {
+      "type": "string",
+      "enum": ["organizer", "sub-organizer"],
+      "description": "User role type"
+    },
+    "address_line1": { "type": "string", "description": "Address line 1" },
+    "address_line2": { "type": "string", "description": "Address line 2" },
+    "zip_code": { "type": "string", "description": "Postal zip code" },
+    "address_locality": { "type": "string", "description": "City or locality" },
+    "address_region": { "type": "string", "description": "State or region" },
+    "address_country": { "type": "string", "description": "Country code" }
+  }
+}
