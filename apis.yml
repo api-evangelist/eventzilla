@@ -60,7 +60,7 @@ common:
     url: https://www.eventzilla.net/privacy-policy/
   - type: Login
     url: https://app.eventzilla.net/us/login
-  - type: SignUp
+  - type: Signup
     url: https://www.eventzilla.net/
   - type: About
     url: https://www.eventzilla.net/about/
