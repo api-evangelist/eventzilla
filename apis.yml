@@ -44,6 +44,10 @@ apis:
         email: support@eventzilla.net
         url: https://community.eventzilla.net/
 common:
+  - type: DomainSecurity
+    url: security/eventzilla-domain-security.yml
+  - type: Authentication
+    url: authentication/eventzilla-authentication.yml
   - type: Portal
     url: https://developer.eventzilla.net/
   - type: Documentation
