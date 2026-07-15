@@ -44,6 +44,8 @@ apis:
         email: support@eventzilla.net
         url: https://community.eventzilla.net/
 common:
+  - type: AgenticAccess
+    url: agentic-access/eventzilla-agentic-access.yml
   - type: DomainSecurity
     url: security/eventzilla-domain-security.yml
   - type: Authentication
