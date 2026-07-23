@@ -1,0 +1,59 @@
+openapi: 3.0.3
+info:
+  title: Eventzilla Attendees Categories API
+  description: The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.
+  version: '2.0'
+  contact:
+    name: Eventzilla Support
+    email: support@eventzilla.net
+    url: https://community.eventzilla.net/
+  termsOfService: https://www.eventzilla.net/terms-conditions/
+  license:
+    name: Proprietary
+    url: https://www.eventzilla.net/terms-conditions/
+servers:
+- url: https://www.eventzillaapi.net/api/v2
+  description: Eventzilla API v2
+security:
+- ApiKeyAuth: []
+tags:
+- name: Categories
+  description: Event category operations
+paths:
+  /categories:
+    get:
+      operationId: listCategories
+      summary: List event categories
+      description: Retrieve all available event categories.
+      tags:
+      - Categories
+      responses:
+        '200':
+          description: List of event categories
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoriesResponse'
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        category:
+          type: string
+          example: Business
+    CategoriesResponse:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+externalDocs:
+  description: Eventzilla API Documentation
+  url: https://developer.eventzilla.net/docs/

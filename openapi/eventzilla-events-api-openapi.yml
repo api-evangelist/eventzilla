@@ -1,0 +1,217 @@
+openapi: 3.0.3
+info:
+  title: Eventzilla Attendees Events API
+  description: The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.
+  version: '2.0'
+  contact:
+    name: Eventzilla Support
+    email: support@eventzilla.net
+    url: https://community.eventzilla.net/
+  termsOfService: https://www.eventzilla.net/terms-conditions/
+  license:
+    name: Proprietary
+    url: https://www.eventzilla.net/terms-conditions/
+servers:
+- url: https://www.eventzillaapi.net/api/v2
+  description: Eventzilla API v2
+security:
+- ApiKeyAuth: []
+tags:
+- name: Events
+  description: Event listing and detail operations
+paths:
+  /events:
+    get:
+      operationId: listEvents
+      summary: List events
+      description: List all events with optional filtering and pagination.
+      tags:
+      - Events
+      parameters:
+      - name: status
+        in: query
+        description: Filter by event status
+        schema:
+          type: string
+          enum:
+          - live
+          - draft
+          - unpublished
+          - completed
+      - name: category
+        in: query
+        description: Filter by event category
+        schema:
+          type: string
+      - name: offset
+        in: query
+        description: Number of records to skip
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum records per response
+        schema:
+          type: integer
+          default: 20
+      responses:
+        '200':
+          description: Paginated list of events
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventsResponse'
+  /events/{eventid}:
+    get:
+      operationId: getEvent
+      summary: Get event by ID
+      description: Retrieve details for a specific event.
+      tags:
+      - Events
+      parameters:
+      - name: eventid
+        in: path
+        required: true
+        description: Unique identifier of the event
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Event details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventsResponse'
+  /events/togglesales:
+    post:
+      operationId: toggleEventSales
+      summary: Toggle event sales
+      description: Publish or unpublish an event to start or stop ticket sales.
+      tags:
+      - Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ToggleSalesRequest'
+      responses:
+        '200':
+          description: Updated event status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToggleSalesResponse'
+components:
+  schemas:
+    EventsResponse:
+      type: object
+      properties:
+        pagination:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pagination'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+    Pagination:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+    ToggleSalesResponse:
+      type: object
+      properties:
+        eventstatus:
+          type: string
+          enum:
+          - published
+          - unpublished
+    ToggleSalesRequest:
+      type: object
+      required:
+      - eventid
+      - status
+      properties:
+        eventid:
+          type: integer
+        status:
+          type: boolean
+          description: true to publish, false to unpublish
+    Event:
+      type: object
+      properties:
+        id:
+          type: number
+        title:
+          type: string
+        description:
+          type: string
+        currency:
+          type: string
+        start_date:
+          type: string
+          format: date-time
+        start_time:
+          type: string
+        end_date:
+          type: string
+          format: date-time
+        end_time:
+          type: string
+        time_zone:
+          type: string
+        tickets_sold:
+          type: number
+        tickets_total:
+          type: number
+        status:
+          type: string
+          enum:
+          - live
+          - draft
+          - unpublished
+          - completed
+        show_remaining:
+          type: boolean
+        twitter_hashtag:
+          type: string
+        utc_offset:
+          type: string
+        invite_code:
+          type: string
+        url:
+          type: string
+          format: uri
+        logo_url:
+          type: string
+          format: uri
+        bgimage_url:
+          type: string
+          format: uri
+        venue:
+          type: string
+        dateid:
+          type: number
+        categories:
+          type: string
+        language:
+          type: string
+        description_html:
+          type: string
+        timezone_code:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+externalDocs:
+  description: Eventzilla API Documentation
+  url: https://developer.eventzilla.net/docs/

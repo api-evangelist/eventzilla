@@ -1,0 +1,371 @@
+openapi: 3.0.3
+info:
+  title: Eventzilla Attendees Checkout API
+  description: The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.
+  version: '2.0'
+  contact:
+    name: Eventzilla Support
+    email: support@eventzilla.net
+    url: https://community.eventzilla.net/
+  termsOfService: https://www.eventzilla.net/terms-conditions/
+  license:
+    name: Proprietary
+    url: https://www.eventzilla.net/terms-conditions/
+servers:
+- url: https://www.eventzillaapi.net/api/v2
+  description: Eventzilla API v2
+security:
+- ApiKeyAuth: []
+tags:
+- name: Checkout
+  description: Checkout workflow operations
+paths:
+  /checkout/prepare/{eventid}/{dateid}:
+    get:
+      operationId: prepareCheckout
+      summary: Prepare checkout session
+      description: Retrieve payment options, ticket types, and questions to prepare a checkout session.
+      tags:
+      - Checkout
+      parameters:
+      - name: eventid
+        in: path
+        required: true
+        description: Unique identifier of the event
+        schema:
+          type: integer
+      - name: dateid
+        in: path
+        required: true
+        description: Unique identifier of the event date
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Checkout preparation data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckoutPrepareResponse'
+  /checkout/create:
+    post:
+      operationId: createCheckout
+      summary: Create checkout
+      description: Create a checkout session with selected ticket types.
+      tags:
+      - Checkout
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckoutCreateRequest'
+      responses:
+        '200':
+          description: Checkout created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckoutCreateResponse'
+  /checkout/fillorder:
+    post:
+      operationId: fillOrder
+      summary: Fill order details
+      description: Provide buyer and attendee details for a checkout session.
+      tags:
+      - Checkout
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckoutFillOrderRequest'
+      responses:
+        '200':
+          description: Order filled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckoutFillOrderResponse'
+  /checkout/confirm:
+    post:
+      operationId: confirmCheckout
+      summary: Confirm checkout
+      description: Confirm a checkout order with payment status.
+      tags:
+      - Checkout
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckoutConfirmRequest'
+      responses:
+        '200':
+          description: Checkout confirmed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckoutConfirmResponse'
+components:
+  schemas:
+    CheckoutTicket:
+      type: object
+      properties:
+        ticket_price_id:
+          type: number
+        ticket_type_id:
+          type: number
+        ticket_type_name:
+          type: string
+    CheckoutFillOrderRequest:
+      type: object
+      required:
+      - eventid
+      - eventdateid
+      - checkout_id
+      - buyerdetails
+      - tickets
+      - payment_id
+      properties:
+        eventid:
+          type: integer
+        eventdateid:
+          type: integer
+        checkout_id:
+          type: integer
+        buyerdetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/BuyerDetails'
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketFillItem'
+        payment_id:
+          type: integer
+    Question:
+      type: object
+      properties:
+        question_id:
+          type: number
+        question_type:
+          type: string
+        question_text:
+          type: string
+        question_choices:
+          type: array
+          items:
+            type: string
+        question_waiver:
+          type: string
+        has_subquestion:
+          type: boolean
+        subquestion_rules:
+          type: array
+          items: {}
+    PaymentOption:
+      type: object
+      properties:
+        payment_id:
+          type: number
+        paymentoption_name:
+          type: string
+    AnswerItem:
+      type: object
+      properties:
+        question_id:
+          type: number
+        answer_text:
+          type: string
+    CheckoutPrepareResponse:
+      type: object
+      properties:
+        payment_options:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentOption'
+        tickettypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketTypeOption'
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
+        discount_enabled:
+          type: boolean
+        tax_enabled:
+          type: boolean
+        tax:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tax'
+    Tax:
+      type: object
+      properties:
+        tax_type:
+          type: string
+        tax_name:
+          type: string
+        tax_value:
+          type: string
+    BuyerDetails:
+      type: object
+      properties:
+        buyer_firstname:
+          type: string
+        buyer_lastname:
+          type: string
+        buyer_email:
+          type: string
+          format: email
+    CheckoutFillOrderResponse:
+      type: object
+      properties:
+        checkout_id:
+          type: number
+        transaction_ref:
+          type: string
+        transaction_total:
+          type: number
+        transaction_tax:
+          type: number
+        transaction_discount:
+          type: number
+        transaction_status:
+          type: string
+        eventzilla_fee:
+          type: number
+        currency:
+          type: string
+    CheckoutConfirmResponse:
+      type: object
+      properties:
+        checkout_id:
+          type: number
+        transaction_ref:
+          type: string
+        transaction_total:
+          type: number
+        transaction_tax:
+          type: number
+        transaction_discount:
+          type: number
+        eventzilla_fee:
+          type: number
+        transaction_status:
+          type: string
+        confirmation_email_sent:
+          type: boolean
+        currency:
+          type: string
+    CheckoutCreateResponse:
+      type: object
+      properties:
+        checkout_id:
+          type: number
+        transaction_ref:
+          type: string
+        transaction_total:
+          type: number
+        transaction_tax:
+          type: number
+        transaction_discount:
+          type: number
+        eventzilla_fee:
+          type: number
+        currency:
+          type: string
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/CheckoutTicket'
+    CheckoutCreateRequest:
+      type: object
+      required:
+      - eventid
+      - eventdateid
+      - ticket_types
+      properties:
+        eventid:
+          type: integer
+        eventdateid:
+          type: integer
+        ticket_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketSelection'
+        discount_code:
+          type: string
+    TicketTypeOption:
+      type: object
+      properties:
+        ticket_type_id:
+          type: number
+        ticket_type_name:
+          type: string
+        ticket_type_price:
+          type: string
+        ticket_type_min_limit:
+          type: number
+        ticket_type_max_limit:
+          type: number
+        ticket_type_avail_quantity:
+          type: number
+        ticket_type_onsale:
+          type: boolean
+        ticket_type_description:
+          type: string
+    TicketSelection:
+      type: object
+      properties:
+        ticket_type_id:
+          type: number
+        quantity:
+          type: number
+    TicketFillItem:
+      type: object
+      properties:
+        ticket_price_id:
+          type: number
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnswerItem'
+    CheckoutConfirmRequest:
+      type: object
+      required:
+      - eventid
+      - eventdateid
+      - checkout_id
+      - payment_status
+      properties:
+        eventid:
+          type: integer
+        eventdateid:
+          type: integer
+        checkout_id:
+          type: integer
+        payment_status:
+          type: string
+        comments:
+          type: string
+        sendemail:
+          type: boolean
+          default: true
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+externalDocs:
+  description: Eventzilla API Documentation
+  url: https://developer.eventzilla.net/docs/

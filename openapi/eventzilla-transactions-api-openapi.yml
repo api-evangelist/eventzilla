@@ -1,0 +1,293 @@
+openapi: 3.0.3
+info:
+  title: Eventzilla Attendees Transactions API
+  description: The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.
+  version: '2.0'
+  contact:
+    name: Eventzilla Support
+    email: support@eventzilla.net
+    url: https://community.eventzilla.net/
+  termsOfService: https://www.eventzilla.net/terms-conditions/
+  license:
+    name: Proprietary
+    url: https://www.eventzilla.net/terms-conditions/
+servers:
+- url: https://www.eventzillaapi.net/api/v2
+  description: Eventzilla API v2
+security:
+- ApiKeyAuth: []
+tags:
+- name: Transactions
+  description: Transaction and order operations
+paths:
+  /events/{eventid}/transactions:
+    get:
+      operationId: listEventTransactions
+      summary: List transactions for event
+      description: Retrieve all transactions for a specific event with pagination.
+      tags:
+      - Transactions
+      parameters:
+      - name: eventid
+        in: path
+        required: true
+        description: Unique identifier of the event
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        description: Number of records to skip
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum records per response
+        schema:
+          type: integer
+          default: 20
+      responses:
+        '200':
+          description: Paginated list of transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionsListResponse'
+  /events/order/confirm:
+    post:
+      operationId: confirmOrder
+      summary: Confirm event order
+      description: Confirm a pending order for an event.
+      tags:
+      - Transactions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderConfirmRequest'
+      responses:
+        '200':
+          description: Order confirmation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderConfirmResponse'
+  /events/order/cancel:
+    post:
+      operationId: cancelOrder
+      summary: Cancel event order
+      description: Cancel an existing order for an event.
+      tags:
+      - Transactions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCancelRequest'
+      responses:
+        '200':
+          description: Order cancellation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderCancelResponse'
+  /transactions/{checkout_id}:
+    get:
+      operationId: getTransactionByCheckoutId
+      summary: Get transaction by checkout ID
+      description: Retrieve a transaction using its checkout identifier.
+      tags:
+      - Transactions
+      parameters:
+      - name: checkout_id
+        in: path
+        required: true
+        description: Checkout identifier for the transaction
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Transaction details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionDetailResponse'
+  /transactions/{refno}:
+    get:
+      operationId: getTransactionByRef
+      summary: Get transaction by reference number
+      description: Retrieve a transaction using its reference number.
+      tags:
+      - Transactions
+      parameters:
+      - name: refno
+        in: path
+        required: true
+        description: Reference number for the transaction
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Transaction details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionDetailResponse'
+components:
+  schemas:
+    TransactionsListResponse:
+      type: object
+      properties:
+        pagination:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pagination'
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+    OrderCancelRequest:
+      type: object
+      required:
+      - checkout_id
+      - eventid
+      properties:
+        checkout_id:
+          type: integer
+        eventid:
+          type: integer
+        comments:
+          type: string
+    OrderCancelResponse:
+      type: object
+      properties:
+        ordercancel:
+          type: string
+          example: success
+    TransactionDetailResponse:
+      type: object
+      properties:
+        transaction:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionDetail'
+    OrderConfirmRequest:
+      type: object
+      required:
+      - checkout_id
+      - eventid
+      properties:
+        checkout_id:
+          type: integer
+        eventid:
+          type: integer
+        comments:
+          type: string
+        sendemail:
+          type: boolean
+          default: true
+    Pagination:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+    TransactionDetail:
+      type: object
+      properties:
+        refno:
+          type: string
+        checkout_id:
+          type: number
+        transaction_date:
+          type: string
+        transaction_amount:
+          type: number
+        tickets_in_transaction:
+          type: number
+        event_date:
+          type: string
+          format: date-time
+        transaction_status:
+          type: string
+        user_id:
+          type: number
+        event_id:
+          type: number
+        title:
+          type: string
+        email:
+          type: string
+          format: email
+        buyer_first_name:
+          type: string
+        buyer_last_name:
+          type: string
+        promo_code:
+          type: string
+        payment_type:
+          type: string
+        comments:
+          type: string
+        transaction_tax:
+          type: number
+        transaction_discount:
+          type: number
+        eventzilla_fee:
+          type: number
+    Transaction:
+      type: object
+      properties:
+        transaction_ref:
+          type: string
+        checkout_id:
+          type: number
+        transaction_date:
+          type: string
+        transaction_amount:
+          type: string
+        tickets_in_transaction:
+          type: number
+        event_date:
+          type: string
+          format: date-time
+        transaction_status:
+          type: string
+        user_id:
+          type: number
+        event_id:
+          type: number
+        title:
+          type: string
+        email:
+          type: string
+          format: email
+        buyer_first_name:
+          type: string
+        buyer_last_name:
+          type: string
+        promo_code:
+          type: string
+        payment_type:
+          type: string
+        comments:
+          type: string
+    OrderConfirmResponse:
+      type: object
+      properties:
+        orderconfirm:
+          type: string
+          example: success
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+externalDocs:
+  description: Eventzilla API Documentation
+  url: https://developer.eventzilla.net/docs/

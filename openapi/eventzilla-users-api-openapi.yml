@@ -1,0 +1,149 @@
+openapi: 3.0.3
+info:
+  title: Eventzilla Attendees Users API
+  description: The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.
+  version: '2.0'
+  contact:
+    name: Eventzilla Support
+    email: support@eventzilla.net
+    url: https://community.eventzilla.net/
+  termsOfService: https://www.eventzilla.net/terms-conditions/
+  license:
+    name: Proprietary
+    url: https://www.eventzilla.net/terms-conditions/
+servers:
+- url: https://www.eventzillaapi.net/api/v2
+  description: Eventzilla API v2
+security:
+- ApiKeyAuth: []
+tags:
+- name: Users
+  description: Organizer and sub-organizer operations
+paths:
+  /users/:
+    get:
+      operationId: listUsers
+      summary: List users
+      description: List all organizers and sub-organizers with pagination.
+      tags:
+      - Users
+      parameters:
+      - name: offset
+        in: query
+        description: Number of records to skip
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum records per response
+        schema:
+          type: integer
+          default: 20
+      responses:
+        '200':
+          description: Paginated list of users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersResponse'
+  /users/{userid}:
+    get:
+      operationId: getUser
+      summary: Get user by ID
+      description: Retrieve details for a specific organizer or sub-organizer.
+      tags:
+      - Users
+      parameters:
+      - name: userid
+        in: path
+        required: true
+        description: Unique identifier of the user
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: User details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersResponse'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: number
+        username:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        company:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        zip_code:
+          type: string
+        address_locality:
+          type: string
+        address_region:
+          type: string
+        address_country:
+          type: string
+        email:
+          type: string
+          format: email
+        timezone:
+          type: string
+        website:
+          type: string
+          format: uri
+        phone_primary:
+          type: string
+        avatar_url:
+          type: string
+          format: uri
+        facebook_id:
+          type: string
+        twitter_id:
+          type: string
+        last_seen:
+          type: string
+        user_type:
+          type: string
+          enum:
+          - organizer
+          - sub-organizer
+    Pagination:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+    UsersResponse:
+      type: object
+      properties:
+        pagination:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pagination'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+externalDocs:
+  description: Eventzilla API Documentation
+  url: https://developer.eventzilla.net/docs/

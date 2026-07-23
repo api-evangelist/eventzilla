@@ -1,0 +1,134 @@
+openapi: 3.0.3
+info:
+  title: Eventzilla Attendees Tickets API
+  description: The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.
+  version: '2.0'
+  contact:
+    name: Eventzilla Support
+    email: support@eventzilla.net
+    url: https://community.eventzilla.net/
+  termsOfService: https://www.eventzilla.net/terms-conditions/
+  license:
+    name: Proprietary
+    url: https://www.eventzilla.net/terms-conditions/
+servers:
+- url: https://www.eventzillaapi.net/api/v2
+  description: Eventzilla API v2
+security:
+- ApiKeyAuth: []
+tags:
+- name: Tickets
+  description: Ticket type operations
+paths:
+  /events/{eventid}/tickets:
+    get:
+      operationId: listEventTickets
+      summary: List ticket categories for event
+      description: Retrieve all ticket types and donation options for a specific event.
+      tags:
+      - Tickets
+      parameters:
+      - name: eventid
+        in: path
+        required: true
+        description: Unique identifier of the event
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Ticket types and donation options
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketsResponse'
+components:
+  schemas:
+    TicketsResponse:
+      type: object
+      properties:
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ticket'
+        donation:
+          type: array
+          items:
+            $ref: '#/components/schemas/Donation'
+    Ticket:
+      type: object
+      properties:
+        id:
+          type: number
+        title:
+          type: string
+        quantity_total:
+          type: string
+        price:
+          type: string
+        description:
+          type: string
+        sales_start_date:
+          type: string
+        sales_start_time:
+          type: string
+          format: date-time
+        sales_end_date:
+          type: string
+          format: date-time
+        sales_end_time:
+          type: string
+        group_discount:
+          type: string
+        group_percentage:
+          type: string
+        group_price:
+          type: string
+        additional_instructions:
+          type: string
+        unlock_code:
+          type: string
+        ticket_type:
+          type: string
+        boxoffice_only:
+          type: boolean
+        is_visible:
+          type: boolean
+        limit_minimum:
+          type: string
+        limit_maximum:
+          type: string
+        allow_partial_payment:
+          type: boolean
+        partial_payment_installments:
+          type: string
+        partial_payment_frequency:
+          type: string
+        partial_payment_amount:
+          type: string
+    Donation:
+      type: object
+      properties:
+        donationid:
+          type: number
+        title:
+          type: string
+        description:
+          type: string
+        quantity_total:
+          type: number
+        donation_minimum:
+          type: string
+        donation_start_date:
+          type: string
+          format: date-time
+        donation_end_date:
+          type: string
+          format: date-time
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+externalDocs:
+  description: Eventzilla API Documentation
+  url: https://developer.eventzilla.net/docs/
