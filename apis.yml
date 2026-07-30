@@ -5,6 +5,18 @@ description: >-
   and attendee check-in workflows. The API uses predictable, resource-oriented
   URLs organized around the JSON format, enabling integrations for event
   creation, attendee management, order processing, and check-in operations.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.eventzilla.net/favicon.ico
 tags:
   - Events
@@ -15,34 +27,104 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/eventzilla/refs/heads/main/apis.yml
 specificationVersion: "0.19"
 apis:
-  - name: Eventzilla API
-    description: >-
-      The Eventzilla REST API provides access to event management operations
-      including listing and retrieving events, managing ticket categories,
-      processing registrations and orders, managing attendees, performing
-      check-ins, and handling checkout workflows. Authentication is via an
-      API key passed in the x-api-key request header.
-    image: https://www.eventzilla.net/favicon.ico
-    humanURL: https://developer.eventzilla.net/docs/
-    baseURL: https://www.eventzillaapi.net/api/v2/
-    tags:
-      - Events
-      - Ticketing
-      - Registrations
-      - Attendees
-      - Check-in
-      - Orders
-    properties:
-      - type: Documentation
-        url: https://developer.eventzilla.net/docs/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/eventzilla/refs/heads/main/openapi/openapi.yml
-      - type: Authentication
-        url: https://developer.eventzilla.net/docs/
-    contact:
-      - FN: Eventzilla Support
-        email: support@eventzilla.net
-        url: https://community.eventzilla.net/
+- aid: eventzilla:eventzilla-attendees-api
+  name: Eventzilla Attendees API
+  description: Attendee management and check-in operations
+  humanURL: https://developer.eventzilla.net/docs/
+  baseURL: https://www.eventzillaapi.net/api/v2/
+  tags:
+  - Attendees
+  properties:
+  - type: OpenAPI
+    url: openapi/eventzilla-attendees-api-openapi.yml
+  - type: Documentation
+    url: https://developer.eventzilla.net/docs/
+  - type: Authentication
+    url: https://developer.eventzilla.net/docs/
+- aid: eventzilla:eventzilla-categories-api
+  name: Eventzilla Categories API
+  description: Event category operations
+  humanURL: https://developer.eventzilla.net/docs/
+  baseURL: https://www.eventzillaapi.net/api/v2/
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/eventzilla-categories-api-openapi.yml
+  - type: Documentation
+    url: https://developer.eventzilla.net/docs/
+  - type: Authentication
+    url: https://developer.eventzilla.net/docs/
+- aid: eventzilla:eventzilla-checkout-api
+  name: Eventzilla Checkout API
+  description: Checkout workflow operations
+  humanURL: https://developer.eventzilla.net/docs/
+  baseURL: https://www.eventzillaapi.net/api/v2/
+  tags:
+  - Checkout
+  properties:
+  - type: OpenAPI
+    url: openapi/eventzilla-checkout-api-openapi.yml
+  - type: Documentation
+    url: https://developer.eventzilla.net/docs/
+  - type: Authentication
+    url: https://developer.eventzilla.net/docs/
+- aid: eventzilla:eventzilla-events-api
+  name: Eventzilla Events API
+  description: Event listing and detail operations
+  humanURL: https://developer.eventzilla.net/docs/
+  baseURL: https://www.eventzillaapi.net/api/v2/
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/eventzilla-events-api-openapi.yml
+  - type: Documentation
+    url: https://developer.eventzilla.net/docs/
+  - type: Authentication
+    url: https://developer.eventzilla.net/docs/
+- aid: eventzilla:eventzilla-tickets-api
+  name: Eventzilla Tickets API
+  description: Ticket type operations
+  humanURL: https://developer.eventzilla.net/docs/
+  baseURL: https://www.eventzillaapi.net/api/v2/
+  tags:
+  - Tickets
+  properties:
+  - type: OpenAPI
+    url: openapi/eventzilla-tickets-api-openapi.yml
+  - type: Documentation
+    url: https://developer.eventzilla.net/docs/
+  - type: Authentication
+    url: https://developer.eventzilla.net/docs/
+- aid: eventzilla:eventzilla-transactions-api
+  name: Eventzilla Transactions API
+  description: Transaction and order operations
+  humanURL: https://developer.eventzilla.net/docs/
+  baseURL: https://www.eventzillaapi.net/api/v2/
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/eventzilla-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.eventzilla.net/docs/
+  - type: Authentication
+    url: https://developer.eventzilla.net/docs/
+- aid: eventzilla:eventzilla-users-api
+  name: Eventzilla Users API
+  description: Organizer and sub-organizer operations
+  humanURL: https://developer.eventzilla.net/docs/
+  baseURL: https://www.eventzillaapi.net/api/v2/
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/eventzilla-users-api-openapi.yml
+  - type: Documentation
+    url: https://developer.eventzilla.net/docs/
+  - type: Authentication
+    url: https://developer.eventzilla.net/docs/
 common:
   - type: AgenticAccess
     url: agentic-access/eventzilla-agentic-access.yml
