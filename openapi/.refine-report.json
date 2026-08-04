@@ -1,0 +1,26 @@
+{
+  "provider": "eventzilla",
+  "sources": [
+    "eventzilla-attendees-api-openapi.yml",
+    "eventzilla-categories-api-openapi.yml",
+    "eventzilla-checkout-api-openapi.yml",
+    "eventzilla-events-api-openapi.yml",
+    "eventzilla-tickets-api-openapi.yml",
+    "eventzilla-transactions-api-openapi.yml",
+    "eventzilla-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "eventzilla-attendees-api-openapi.yml",
+    "eventzilla-categories-api-openapi.yml",
+    "eventzilla-checkout-api-openapi.yml",
+    "eventzilla-events-api-openapi.yml",
+    "eventzilla-tickets-api-openapi.yml",
+    "eventzilla-transactions-api-openapi.yml",
+    "eventzilla-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
