@@ -25,7 +25,7 @@ tags:
   - Attendees
   - Event Management
 url: https://raw.githubusercontent.com/api-evangelist/eventzilla/refs/heads/main/apis.yml
-specificationVersion: "0.19"
+specificationVersion: '0.23'
 apis:
 - aid: eventzilla:eventzilla-attendees-api
   name: Eventzilla Attendees API
