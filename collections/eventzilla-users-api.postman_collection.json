@@ -1,0 +1,247 @@
+{
+  "item": [
+    {
+      "id": "81ce35db-7edb-49d6-84f6-791ae5abd3a7",
+      "name": "Users",
+      "description": {
+        "content": "Organizer and sub-organizer operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3c40ebfc-0ff2-47f9-aa46-ff77812c8a51",
+          "name": "List users",
+          "request": {
+            "name": "List users",
+            "description": {
+              "content": "List all organizers and sub-organizers with pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum records per response"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a52be8ad-409f-431f-9bf2-968d59dc5d23",
+              "name": "Paginated list of users",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": [\n    {\n      \"offset\": 5205,\n      \"limit\": 4502,\n      \"total\": 3499\n    },\n    {\n      \"offset\": 632,\n      \"limit\": 2940,\n      \"total\": 2889\n    }\n  ],\n  \"users\": [\n    {\n      \"id\": 6386.170256587397,\n      \"username\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"company\": \"string\",\n      \"address_line1\": \"string\",\n      \"address_line2\": \"string\",\n      \"zip_code\": \"string\",\n      \"address_locality\": \"string\",\n      \"address_region\": \"string\",\n      \"address_country\": \"string\",\n      \"email\": \"DFQXQ@ZlckFZBjbcZElWnoDxxam.pav\",\n      \"timezone\": \"string\",\n      \"website\": \"http://utjwQgXRLZKyIJqPzdQOUwCUntGKNEdf.xwrxsQ.iSJveGKwNg6ZBuED5f5zvsEQxHkK-n\",\n      \"phone_primary\": \"string\",\n      \"avatar_url\": \"https://oaOxfN.zkmi.+TrtK,gu5fehWmM9Kr5JJNeIlguhrXCj9.MkHMFR26xHTdgnb2FidSvjp7kG0uqnzoQYtQ68\",\n      \"facebook_id\": \"string\",\n      \"twitter_id\": \"string\",\n      \"last_seen\": \"string\",\n      \"user_type\": \"sub-organizer\"\n    },\n    {\n      \"id\": 9952.650701423981,\n      \"username\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"company\": \"string\",\n      \"address_line1\": \"string\",\n      \"address_line2\": \"string\",\n      \"zip_code\": \"string\",\n      \"address_locality\": \"string\",\n      \"address_region\": \"string\",\n      \"address_country\": \"string\",\n      \"email\": \"uq6SL9oSRvg@MLDQARabOPeqxmvBlq.jcph\",\n      \"timezone\": \"string\",\n      \"website\": \"http://nfsZErdTBCofgMANXNnCMeQYOh.yzrz03\",\n      \"phone_primary\": \"string\",\n      \"avatar_url\": \"http://MzFemWsC.dvfQGDCzPHwaNSzjlhmhmCg26cHERH-fmb+XOqjpHMOoW6GGX-VHTvauAHwde3D\",\n      \"facebook_id\": \"string\",\n      \"twitter_id\": \"string\",\n      \"last_seen\": \"string\",\n      \"user_type\": \"organizer\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e5cbb7a-6fda-467f-a701-f43070fe4358",
+          "name": "Get user by ID",
+          "request": {
+            "name": "Get user by ID",
+            "description": {
+              "content": "Retrieve details for a specific organizer or sub-organizer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "userid",
+                  "description": "(Required) Unique identifier of the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3281ab1f-f833-4b5a-b6e3-cb90eb2d7b1f",
+              "name": "User details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "userid",
+                      "description": "(Required) Unique identifier of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": [\n    {\n      \"offset\": 9882,\n      \"limit\": 3484,\n      \"total\": 8719\n    },\n    {\n      \"offset\": 6187,\n      \"limit\": 9830,\n      \"total\": 6581\n    }\n  ],\n  \"users\": [\n    {\n      \"id\": 3326.688190731213,\n      \"username\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"company\": \"string\",\n      \"address_line1\": \"string\",\n      \"address_line2\": \"string\",\n      \"zip_code\": \"string\",\n      \"address_locality\": \"string\",\n      \"address_region\": \"string\",\n      \"address_country\": \"string\",\n      \"email\": \"HYgGQa0iIgz@KiuNObgtpzeGySmQBaddBeNDYE.zv\",\n      \"timezone\": \"string\",\n      \"website\": \"https://IzugycEpPAUzzdjXpvWeJU.ztnyj6e33cOXPtK9Y9Z8a6QPeD-Xd-fy.6+YjVO2MBpOxacnJa7COQvh0J1.IdBYZ3o7Z0bR\",\n      \"phone_primary\": \"string\",\n      \"avatar_url\": \"https://KIV.yncqj+dydoCMHnqj25lNYqyqdPQxwVXx7mOKjzO-CNWsfr7I7OwP,c3Xm61oDgGseZHwz2YOncnm\",\n      \"facebook_id\": \"string\",\n      \"twitter_id\": \"string\",\n      \"last_seen\": \"string\",\n      \"user_type\": \"organizer\"\n    },\n    {\n      \"id\": 7394.934132347094,\n      \"username\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"company\": \"string\",\n      \"address_line1\": \"string\",\n      \"address_line2\": \"string\",\n      \"zip_code\": \"string\",\n      \"address_locality\": \"string\",\n      \"address_region\": \"string\",\n      \"address_country\": \"string\",\n      \"email\": \"PcFc@TGzhI.ha\",\n      \"timezone\": \"string\",\n      \"website\": \"http://B.rmlmYetr\",\n      \"phone_primary\": \"string\",\n      \"avatar_url\": \"https://LDCveeKqxWfiTVYCyYOTCtdZReVDboZq.oeatX8HLW2NHOxMgyOtIecr46dc2Vl\",\n      \"facebook_id\": \"string\",\n      \"twitter_id\": \"string\",\n      \"last_seen\": \"string\",\n      \"user_type\": \"organizer\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.eventzillaapi.net/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "776d85b4-77d4-4079-ac41-0f7380d42099",
+    "name": "Eventzilla Attendees Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.\n\nContact Support:\n Name: Eventzilla Support\n Email: support@eventzilla.net",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,466 @@
+{
+  "item": [
+    {
+      "id": "4eebf2c6-773c-4d97-a89d-c5822cab3516",
+      "name": "Checkout",
+      "description": {
+        "content": "Checkout workflow operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ee2a7ca9-761d-4e45-ac45-308c357f6ed9",
+          "name": "Prepare checkout session",
+          "request": {
+            "name": "Prepare checkout session",
+            "description": {
+              "content": "Retrieve payment options, ticket types, and questions to prepare a checkout session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "checkout",
+                "prepare",
+                ":eventid",
+                ":dateid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "eventid",
+                  "description": "(Required) Unique identifier of the event"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "dateid",
+                  "description": "(Required) Unique identifier of the event date"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b3c76e5-716d-4112-abf8-4ef4095999af",
+              "name": "Checkout preparation data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checkout",
+                    "prepare",
+                    ":eventid",
+                    ":dateid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "eventid",
+                      "description": "(Required) Unique identifier of the event"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dateid",
+                      "description": "(Required) Unique identifier of the event date"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payment_options\": [\n    {\n      \"payment_id\": 9759.42212980372,\n      \"paymentoption_name\": \"string\"\n    },\n    {\n      \"payment_id\": 2297.6327122785933,\n      \"paymentoption_name\": \"string\"\n    }\n  ],\n  \"tickettypes\": [\n    {\n      \"ticket_type_id\": 6070.445860257225,\n      \"ticket_type_name\": \"string\",\n      \"ticket_type_price\": \"string\",\n      \"ticket_type_min_limit\": 449.1552641758512,\n      \"ticket_type_max_limit\": 7445.565849203516,\n      \"ticket_type_avail_quantity\": 4208.435103346647,\n      \"ticket_type_onsale\": true,\n      \"ticket_type_description\": \"string\"\n    },\n    {\n      \"ticket_type_id\": 3100.841717071684,\n      \"ticket_type_name\": \"string\",\n      \"ticket_type_price\": \"string\",\n      \"ticket_type_min_limit\": 9435.435667592812,\n      \"ticket_type_max_limit\": 1659.404005950469,\n      \"ticket_type_avail_quantity\": 8042.617379781338,\n      \"ticket_type_onsale\": false,\n      \"ticket_type_description\": \"string\"\n    }\n  ],\n  \"questions\": [\n    {\n      \"question_id\": 3413.6586071108454,\n      \"question_type\": \"string\",\n      \"question_text\": \"string\",\n      \"question_choices\": [\n        \"string\",\n        \"string\"\n      ],\n      \"question_waiver\": \"string\",\n      \"has_subquestion\": false\n    },\n    {\n      \"question_id\": 1008.3514165623176,\n      \"question_type\": \"string\",\n      \"question_text\": \"string\",\n      \"question_choices\": [\n        \"string\",\n        \"string\"\n      ],\n      \"question_waiver\": \"string\",\n      \"has_subquestion\": true\n    }\n  ],\n  \"discount_enabled\": true,\n  \"tax_enabled\": false,\n  \"tax\": [\n    {\n      \"tax_type\": \"string\",\n      \"tax_name\": \"string\",\n      \"tax_value\": \"string\"\n    },\n    {\n      \"tax_type\": \"string\",\n      \"tax_name\": \"string\",\n      \"tax_value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42fe26f5-5485-4f22-accc-fbd39fca5ba1",
+          "name": "Create checkout",
+          "request": {
+            "name": "Create checkout",
+            "description": {
+              "content": "Create a checkout session with selected ticket types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "checkout",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventid\": \"<integer>\",\n  \"eventdateid\": \"<integer>\",\n  \"ticket_types\": [\n    {\n      \"ticket_type_id\": \"<number>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"ticket_type_id\": \"<number>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"discount_code\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "382bd4e1-7bfa-4013-9d4b-ed317d72abf0",
+              "name": "Checkout created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checkout",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eventid\": \"<integer>\",\n  \"eventdateid\": \"<integer>\",\n  \"ticket_types\": [\n    {\n      \"ticket_type_id\": \"<number>\",\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"ticket_type_id\": \"<number>\",\n      \"quantity\": \"<number>\"\n    }\n  ],\n  \"discount_code\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"checkout_id\": 2353.5616015648807,\n  \"transaction_ref\": \"string\",\n  \"transaction_total\": 5248.803357344716,\n  \"transaction_tax\": 8268.971767473455,\n  \"transaction_discount\": 9832.114518600089,\n  \"eventzilla_fee\": 1910.6463590047983,\n  \"currency\": \"string\",\n  \"tickets\": [\n    {\n      \"ticket_price_id\": 6303.407096346126,\n      \"ticket_type_id\": 4423.017006320163,\n      \"ticket_type_name\": \"string\"\n    },\n    {\n      \"ticket_price_id\": 8033.1687908049835,\n      \"ticket_type_id\": 5908.790913000701,\n      \"ticket_type_name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24712676-0861-4aa9-b445-63b3c9994975",
+          "name": "Fill order details",
+          "request": {
+            "name": "Fill order details",
+            "description": {
+              "content": "Provide buyer and attendee details for a checkout session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "checkout",
+                "fillorder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventid\": \"<integer>\",\n  \"eventdateid\": \"<integer>\",\n  \"checkout_id\": \"<integer>\",\n  \"buyerdetails\": [\n    {\n      \"buyer_firstname\": \"<string>\",\n      \"buyer_lastname\": \"<string>\",\n      \"buyer_email\": \"<email>\"\n    },\n    {\n      \"buyer_firstname\": \"<string>\",\n      \"buyer_lastname\": \"<string>\",\n      \"buyer_email\": \"<email>\"\n    }\n  ],\n  \"tickets\": [\n    {\n      \"ticket_price_id\": \"<number>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"answers\": [\n        {\n          \"question_id\": \"<number>\",\n          \"answer_text\": \"<string>\"\n        },\n        {\n          \"question_id\": \"<number>\",\n          \"answer_text\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"ticket_price_id\": \"<number>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"answers\": [\n        {\n          \"question_id\": \"<number>\",\n          \"answer_text\": \"<string>\"\n        },\n        {\n          \"question_id\": \"<number>\",\n          \"answer_text\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"payment_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f4c18aba-1f88-4675-a347-add40ac83b70",
+              "name": "Order filled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checkout",
+                    "fillorder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eventid\": \"<integer>\",\n  \"eventdateid\": \"<integer>\",\n  \"checkout_id\": \"<integer>\",\n  \"buyerdetails\": [\n    {\n      \"buyer_firstname\": \"<string>\",\n      \"buyer_lastname\": \"<string>\",\n      \"buyer_email\": \"<email>\"\n    },\n    {\n      \"buyer_firstname\": \"<string>\",\n      \"buyer_lastname\": \"<string>\",\n      \"buyer_email\": \"<email>\"\n    }\n  ],\n  \"tickets\": [\n    {\n      \"ticket_price_id\": \"<number>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"answers\": [\n        {\n          \"question_id\": \"<number>\",\n          \"answer_text\": \"<string>\"\n        },\n        {\n          \"question_id\": \"<number>\",\n          \"answer_text\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"ticket_price_id\": \"<number>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"answers\": [\n        {\n          \"question_id\": \"<number>\",\n          \"answer_text\": \"<string>\"\n        },\n        {\n          \"question_id\": \"<number>\",\n          \"answer_text\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"payment_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"checkout_id\": 7417.4668173904765,\n  \"transaction_ref\": \"string\",\n  \"transaction_total\": 152.0274732589577,\n  \"transaction_tax\": 4590.802186428356,\n  \"transaction_discount\": 1929.8393464859453,\n  \"transaction_status\": \"string\",\n  \"eventzilla_fee\": 3160.3726581453407,\n  \"currency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c02c58a-da42-4345-b85d-ad76d4992514",
+          "name": "Confirm checkout",
+          "request": {
+            "name": "Confirm checkout",
+            "description": {
+              "content": "Confirm a checkout order with payment status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "checkout",
+                "confirm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventid\": \"<integer>\",\n  \"eventdateid\": \"<integer>\",\n  \"checkout_id\": \"<integer>\",\n  \"payment_status\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"sendemail\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "75a58ad3-73ac-4a59-a5ef-52319ec9321d",
+              "name": "Checkout confirmed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checkout",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eventid\": \"<integer>\",\n  \"eventdateid\": \"<integer>\",\n  \"checkout_id\": \"<integer>\",\n  \"payment_status\": \"<string>\",\n  \"comments\": \"<string>\",\n  \"sendemail\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"checkout_id\": 9625.267513643244,\n  \"transaction_ref\": \"string\",\n  \"transaction_total\": 6798.477773725288,\n  \"transaction_tax\": 8950.875298167282,\n  \"transaction_discount\": 5094.819412773877,\n  \"eventzilla_fee\": 8003.904846947148,\n  \"transaction_status\": \"string\",\n  \"confirmation_email_sent\": true,\n  \"currency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.eventzillaapi.net/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7971d179-70b5-44c9-82c4-867ad169bc2c",
+    "name": "Eventzilla Attendees Checkout API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.\n\nContact Support:\n Name: Eventzilla Support\n Email: support@eventzilla.net",
+      "type": "text/plain"
+    }
+  }
+}

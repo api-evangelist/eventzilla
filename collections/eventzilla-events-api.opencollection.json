@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Eventzilla Attendees Events API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.eventzillaapi.net/api/v2/events",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by event status"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter by event category"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum records per response"
+              }
+            ]
+          },
+          "docs": "List all events with optional filtering and pagination."
+        },
+        {
+          "info": {
+            "name": "Get event by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.eventzillaapi.net/api/v2/events/:eventid",
+            "params": [
+              {
+                "name": "eventid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the event"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific event."
+        },
+        {
+          "info": {
+            "name": "Toggle event sales",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.eventzillaapi.net/api/v2/events/togglesales",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publish or unpublish an event to start or stop ticket sales."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

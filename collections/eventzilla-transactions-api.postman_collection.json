@@ -1,0 +1,567 @@
+{
+  "item": [
+    {
+      "id": "bf9302fe-b874-4695-b8ac-1f29d398437b",
+      "name": "Transactions",
+      "description": {
+        "content": "Transaction and order operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90e42be9-783f-471d-8ce5-851c7303a5b4",
+          "name": "List transactions for event",
+          "request": {
+            "name": "List transactions for event",
+            "description": {
+              "content": "Retrieve all transactions for a specific event with pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                ":eventid",
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum records per response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "eventid",
+                  "description": "(Required) Unique identifier of the event"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c0afb5be-eaab-4ff9-982d-a10165abe7a0",
+              "name": "Paginated list of transactions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":eventid",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "eventid",
+                      "description": "(Required) Unique identifier of the event"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": [\n    {\n      \"offset\": 1172,\n      \"limit\": 3870,\n      \"total\": 4594\n    },\n    {\n      \"offset\": 7537,\n      \"limit\": 8473,\n      \"total\": 9451\n    }\n  ],\n  \"transactions\": [\n    {\n      \"transaction_ref\": \"string\",\n      \"checkout_id\": 1145.2300520057079,\n      \"transaction_date\": \"string\",\n      \"transaction_amount\": \"string\",\n      \"tickets_in_transaction\": 1924.3346525919292,\n      \"event_date\": \"1955-02-07T06:41:50.679Z\",\n      \"transaction_status\": \"string\",\n      \"user_id\": 3459.4297669143502,\n      \"event_id\": 4206.43177294029,\n      \"title\": \"string\",\n      \"email\": \"iK1wu21HuHPzw5@JQUvbxoTJug.yaft\",\n      \"buyer_first_name\": \"string\",\n      \"buyer_last_name\": \"string\",\n      \"promo_code\": \"string\",\n      \"payment_type\": \"string\",\n      \"comments\": \"string\"\n    },\n    {\n      \"transaction_ref\": \"string\",\n      \"checkout_id\": 2421.2811395933263,\n      \"transaction_date\": \"string\",\n      \"transaction_amount\": \"string\",\n      \"tickets_in_transaction\": 1490.3210748441586,\n      \"event_date\": \"1960-08-12T16:19:44.599Z\",\n      \"transaction_status\": \"string\",\n      \"user_id\": 6607.223226006552,\n      \"event_id\": 6830.281306392046,\n      \"title\": \"string\",\n      \"email\": \"3aO9Y@ZoZuyhuMxmqdFZbnDHeF.wf\",\n      \"buyer_first_name\": \"string\",\n      \"buyer_last_name\": \"string\",\n      \"promo_code\": \"string\",\n      \"payment_type\": \"string\",\n      \"comments\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e522f006-5092-4137-a70a-9fd30b960494",
+          "name": "Confirm event order",
+          "request": {
+            "name": "Confirm event order",
+            "description": {
+              "content": "Confirm a pending order for an event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "order",
+                "confirm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"checkout_id\": \"<integer>\",\n  \"eventid\": \"<integer>\",\n  \"comments\": \"<string>\",\n  \"sendemail\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c2d75064-c066-4903-aba1-0745a1eb1d09",
+              "name": "Order confirmation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "order",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"checkout_id\": \"<integer>\",\n  \"eventid\": \"<integer>\",\n  \"comments\": \"<string>\",\n  \"sendemail\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderconfirm\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00041e0d-9f24-421a-9c3d-c450abb51b80",
+          "name": "Cancel event order",
+          "request": {
+            "name": "Cancel event order",
+            "description": {
+              "content": "Cancel an existing order for an event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "order",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"checkout_id\": \"<integer>\",\n  \"eventid\": \"<integer>\",\n  \"comments\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6dc3a75f-1a8c-428a-8f9a-3379d72f65a9",
+              "name": "Order cancellation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "order",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"checkout_id\": \"<integer>\",\n  \"eventid\": \"<integer>\",\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ordercancel\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af4fcae5-492e-49c1-b211-2d6ed664329a",
+          "name": "Get transaction by checkout ID",
+          "request": {
+            "name": "Get transaction by checkout ID",
+            "description": {
+              "content": "Retrieve a transaction using its checkout identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                ":checkout_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "checkout_id",
+                  "description": "(Required) Checkout identifier for the transaction"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84d4dc86-f61b-4402-810e-e18ebc349110",
+              "name": "Transaction details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    ":checkout_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkout_id",
+                      "description": "(Required) Checkout identifier for the transaction"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transaction\": [\n    {\n      \"refno\": \"string\",\n      \"checkout_id\": 8807.38507325416,\n      \"transaction_date\": \"string\",\n      \"transaction_amount\": 8000.725580166969,\n      \"tickets_in_transaction\": 3905.3871400489247,\n      \"event_date\": \"1995-09-16T02:00:41.274Z\",\n      \"transaction_status\": \"string\",\n      \"user_id\": 8758.245974875188,\n      \"event_id\": 6095.744905859708,\n      \"title\": \"string\",\n      \"email\": \"b5im@JftcUrIFghOaXrgKXbXanZVgIdCdfVCZS.wjy\",\n      \"buyer_first_name\": \"string\",\n      \"buyer_last_name\": \"string\",\n      \"promo_code\": \"string\",\n      \"payment_type\": \"string\",\n      \"comments\": \"string\",\n      \"transaction_tax\": 2450.098170803173,\n      \"transaction_discount\": 2632.271822710742,\n      \"eventzilla_fee\": 7742.440761477011\n    },\n    {\n      \"refno\": \"string\",\n      \"checkout_id\": 2243.938068128719,\n      \"transaction_date\": \"string\",\n      \"transaction_amount\": 562.963464412044,\n      \"tickets_in_transaction\": 5840.264703072337,\n      \"event_date\": \"1959-08-24T23:22:12.876Z\",\n      \"transaction_status\": \"string\",\n      \"user_id\": 2704.2683968563783,\n      \"event_id\": 4763.027323973664,\n      \"title\": \"string\",\n      \"email\": \"lBPaQBb@cqdABQzKmGuBiuTNRZfMN.bm\",\n      \"buyer_first_name\": \"string\",\n      \"buyer_last_name\": \"string\",\n      \"promo_code\": \"string\",\n      \"payment_type\": \"string\",\n      \"comments\": \"string\",\n      \"transaction_tax\": 3904.042554403512,\n      \"transaction_discount\": 3018.415456278896,\n      \"eventzilla_fee\": 6804.883305030893\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1237e1d7-37cc-4466-9aef-613d1d16fd38",
+          "name": "Get transaction by reference number",
+          "request": {
+            "name": "Get transaction by reference number",
+            "description": {
+              "content": "Retrieve a transaction using its reference number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactions",
+                ":refno"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "refno",
+                  "description": "(Required) Reference number for the transaction"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f662d2d3-0ff0-49c3-9e8b-0ad96c6fbd1f",
+              "name": "Transaction details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactions",
+                    ":refno"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refno",
+                      "description": "(Required) Reference number for the transaction"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transaction\": [\n    {\n      \"refno\": \"string\",\n      \"checkout_id\": 4010.756676463567,\n      \"transaction_date\": \"string\",\n      \"transaction_amount\": 2388.559746777198,\n      \"tickets_in_transaction\": 3154.1385895655117,\n      \"event_date\": \"2014-01-05T03:04:14.356Z\",\n      \"transaction_status\": \"string\",\n      \"user_id\": 7655.982232555912,\n      \"event_id\": 6586.612698386875,\n      \"title\": \"string\",\n      \"email\": \"y-G-ng3w8@tVUdgKkHhDyqDgUI.muj\",\n      \"buyer_first_name\": \"string\",\n      \"buyer_last_name\": \"string\",\n      \"promo_code\": \"string\",\n      \"payment_type\": \"string\",\n      \"comments\": \"string\",\n      \"transaction_tax\": 2994.3430928734338,\n      \"transaction_discount\": 8748.37655240195,\n      \"eventzilla_fee\": 4725.059706295789\n    },\n    {\n      \"refno\": \"string\",\n      \"checkout_id\": 4915.502370457736,\n      \"transaction_date\": \"string\",\n      \"transaction_amount\": 771.380713541543,\n      \"tickets_in_transaction\": 9834.90941167137,\n      \"event_date\": \"1981-01-31T05:02:10.540Z\",\n      \"transaction_status\": \"string\",\n      \"user_id\": 7383.824024164131,\n      \"event_id\": 4089.1307691654124,\n      \"title\": \"string\",\n      \"email\": \"RaH1dDHqBi7ogX@OpghYwZAfbEOpfvbDwCZaRutHodBL.jbp\",\n      \"buyer_first_name\": \"string\",\n      \"buyer_last_name\": \"string\",\n      \"promo_code\": \"string\",\n      \"payment_type\": \"string\",\n      \"comments\": \"string\",\n      \"transaction_tax\": 950.35330886178,\n      \"transaction_discount\": 1523.4222094748495,\n      \"eventzilla_fee\": 5335.883146689416\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.eventzillaapi.net/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f0eac599-74af-44e5-a061-a5866847abd5",
+    "name": "Eventzilla Attendees Transactions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.\n\nContact Support:\n Name: Eventzilla Support\n Email: support@eventzilla.net",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Eventzilla Attendees Checkout API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Checkout",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prepare checkout session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.eventzillaapi.net/api/v2/checkout/prepare/:eventid/:dateid",
+            "params": [
+              {
+                "name": "eventid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the event"
+              },
+              {
+                "name": "dateid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the event date"
+              }
+            ]
+          },
+          "docs": "Retrieve payment options, ticket types, and questions to prepare a checkout session."
+        },
+        {
+          "info": {
+            "name": "Create checkout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.eventzillaapi.net/api/v2/checkout/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a checkout session with selected ticket types."
+        },
+        {
+          "info": {
+            "name": "Fill order details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.eventzillaapi.net/api/v2/checkout/fillorder",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Provide buyer and attendee details for a checkout session."
+        },
+        {
+          "info": {
+            "name": "Confirm checkout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.eventzillaapi.net/api/v2/checkout/confirm",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Confirm a checkout order with payment status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

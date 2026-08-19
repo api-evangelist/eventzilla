@@ -1,0 +1,366 @@
+{
+  "item": [
+    {
+      "id": "34e373c7-2095-4cd3-a8b9-a3eef549dd92",
+      "name": "Attendees",
+      "description": {
+        "content": "Attendee management and check-in operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d0acf591-6088-4a43-af45-4758fd6d8947",
+          "name": "List attendees for event",
+          "request": {
+            "name": "List attendees for event",
+            "description": {
+              "content": "Retrieve all attendees for a specific event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                ":eventid",
+                "attendees"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum records per response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "eventid",
+                  "description": "(Required) Unique identifier of the event"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c310d66f-65a6-4596-adc2-b7fb5b356754",
+              "name": "List of attendees",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":eventid",
+                    "attendees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "eventid",
+                      "description": "(Required) Unique identifier of the event"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"attendees\": [\n    {\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"ticket_type\": \"string\",\n      \"bar_code\": \"string\",\n      \"is_attended\": \"string\",\n      \"questions\": [\n        {\n          \"questions\": \"string\",\n          \"answer\": \"string\"\n        },\n        {\n          \"questions\": \"string\",\n          \"answer\": \"string\"\n        }\n      ],\n      \"transaction_ref\": \"string\",\n      \"id\": 1969.0702028751793,\n      \"transaction_date\": \"string\",\n      \"transaction_amount\": 4871.573186450289,\n      \"event_date\": \"string\",\n      \"transaction_status\": \"string\",\n      \"user_id\": 6178.409498997335,\n      \"event_id\": 43.61238164188763,\n      \"title\": \"string\",\n      \"email\": \"fw7DPbOTf0@AuftlqIVoLvZPpsBZyi.hkxv\",\n      \"buyer_first_name\": \"string\",\n      \"buyer_last_name\": \"string\",\n      \"payment_type\": \"string\"\n    },\n    {\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"ticket_type\": \"string\",\n      \"bar_code\": \"string\",\n      \"is_attended\": \"string\",\n      \"questions\": [\n        {\n          \"questions\": \"string\",\n          \"answer\": \"string\"\n        },\n        {\n          \"questions\": \"string\",\n          \"answer\": \"string\"\n        }\n      ],\n      \"transaction_ref\": \"string\",\n      \"id\": 7920.830496315526,\n      \"transaction_date\": \"string\",\n      \"transaction_amount\": 7935.619482540227,\n      \"event_date\": \"string\",\n      \"transaction_status\": \"string\",\n      \"user_id\": 9303.685115257958,\n      \"event_id\": 8812.418831169185,\n      \"title\": \"string\",\n      \"email\": \"ZASUwVl@QJpMUKcKTE.jz\",\n      \"buyer_first_name\": \"string\",\n      \"buyer_last_name\": \"string\",\n      \"payment_type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07aea4cb-609b-45be-8c69-db8677771841",
+          "name": "Get attendee by ID",
+          "request": {
+            "name": "Get attendee by ID",
+            "description": {
+              "content": "Retrieve details for a specific attendee.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "attendees",
+                ":attendeeid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "attendeeid",
+                  "description": "(Required) Unique identifier of the attendee"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3f45a2a-764a-4416-a279-0e030b6a2df1",
+              "name": "Attendee details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attendees",
+                    ":attendeeid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "attendeeid",
+                      "description": "(Required) Unique identifier of the attendee"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"attendees\": [\n    {\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"ticket_type\": \"string\",\n      \"bar_code\": \"string\",\n      \"is_attended\": \"string\",\n      \"questions\": [\n        {\n          \"questions\": \"string\",\n          \"answer\": \"string\"\n        },\n        {\n          \"questions\": \"string\",\n          \"answer\": \"string\"\n        }\n      ],\n      \"refno\": \"string\",\n      \"id\": \"string\",\n      \"transaction_date\": \"string\",\n      \"transaction_amount\": \"string\",\n      \"transaction_status\": \"string\",\n      \"title\": \"string\",\n      \"email\": \"ypzy@oxSgeVagreOjxNNLCgFVyTHHMy.xuy\",\n      \"buyer_first_name\": \"string\",\n      \"buyer_last_name\": \"string\",\n      \"payment_type\": \"string\",\n      \"event_id\": 1098.354413081033,\n      \"event_date\": \"2009-07-18T13:58:14.321Z\"\n    },\n    {\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"ticket_type\": \"string\",\n      \"bar_code\": \"string\",\n      \"is_attended\": \"string\",\n      \"questions\": [\n        {\n          \"questions\": \"string\",\n          \"answer\": \"string\"\n        },\n        {\n          \"questions\": \"string\",\n          \"answer\": \"string\"\n        }\n      ],\n      \"refno\": \"string\",\n      \"id\": \"string\",\n      \"transaction_date\": \"string\",\n      \"transaction_amount\": \"string\",\n      \"transaction_status\": \"string\",\n      \"title\": \"string\",\n      \"email\": \"sW52XsHk7HFSWs@eJqLsMQ.bnt\",\n      \"buyer_first_name\": \"string\",\n      \"buyer_last_name\": \"string\",\n      \"payment_type\": \"string\",\n      \"event_id\": 9031.49352663172,\n      \"event_date\": \"1948-01-09T02:38:29.726Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5cd5d6f-b5cc-4c2c-ac38-773406bcbbc2",
+          "name": "Check in or revert attendee",
+          "request": {
+            "name": "Check in or revert attendee",
+            "description": {
+              "content": "Perform a check-in for an attendee or revert a previous check-in.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "attendees",
+                "checkin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"barcode\": \"<string>\",\n  \"eventcheckin\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cfa5f06d-7f54-4053-a5e0-2aedae63401d",
+              "name": "Check-in result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attendees",
+                    "checkin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"barcode\": \"<string>\",\n  \"eventcheckin\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"eventtitle\": \"string\",\n  \"orderef\": \"string\",\n  \"email\": \"kMoUHUxPokSrSh@VmdqEiz.gsvn\",\n  \"status\": \"Checkin\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.eventzillaapi.net/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8065c5d3-b775-4e4b-97b8-b07dd496d6ac",
+    "name": "Eventzilla Attendees API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.\n\nContact Support:\n Name: Eventzilla Support\n Email: support@eventzilla.net",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,366 @@
+{
+  "item": [
+    {
+      "id": "faff8630-b625-4caf-8245-6379905b64a8",
+      "name": "Events",
+      "description": {
+        "content": "Event listing and detail operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cbb3f360-540a-4339-a2d0-249f8574b096",
+          "name": "List events",
+          "request": {
+            "name": "List events",
+            "description": {
+              "content": "List all events with optional filtering and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by event status"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by event category"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum records per response"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ac639fc-ab99-4c2b-9296-2d8812d0844a",
+              "name": "Paginated list of events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": [\n    {\n      \"offset\": 4747,\n      \"limit\": 4102,\n      \"total\": 7415\n    },\n    {\n      \"offset\": 4721,\n      \"limit\": 1566,\n      \"total\": 8046\n    }\n  ],\n  \"events\": [\n    {\n      \"id\": 7217.8170833723,\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"currency\": \"string\",\n      \"start_date\": \"1996-06-28T02:06:01.315Z\",\n      \"start_time\": \"string\",\n      \"end_date\": \"1977-09-19T19:55:14.435Z\",\n      \"end_time\": \"string\",\n      \"time_zone\": \"string\",\n      \"tickets_sold\": 3213.268141985873,\n      \"tickets_total\": 3802.8716892283896,\n      \"status\": \"completed\",\n      \"show_remaining\": true,\n      \"twitter_hashtag\": \"string\",\n      \"utc_offset\": \"string\",\n      \"invite_code\": \"string\",\n      \"url\": \"http://HVQYuDjleRcdaANz.heb.a34xjcju+fzLYmOfaPHw47C1WIhr5.PmDUAOHwzWG.KgEX,TwkFC2qotw\",\n      \"logo_url\": \"http://PTNALvJXycJJ.nyvnETCTVhv5J\",\n      \"bgimage_url\": \"https://gUjGZurAnxOhqZErkYwBBvcIWl.iqbJa7cKeNt4upZ3pn.y3bdCNK1HEyF9hyiL\",\n      \"venue\": \"string\",\n      \"dateid\": 2438.9184665643315,\n      \"categories\": \"string\",\n      \"language\": \"string\",\n      \"description_html\": \"string\",\n      \"timezone_code\": \"string\"\n    },\n    {\n      \"id\": 2045.9712740867508,\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"currency\": \"string\",\n      \"start_date\": \"1947-12-30T19:31:30.729Z\",\n      \"start_time\": \"string\",\n      \"end_date\": \"2006-09-11T20:19:17.577Z\",\n      \"end_time\": \"string\",\n      \"time_zone\": \"string\",\n      \"tickets_sold\": 2762.491570720098,\n      \"tickets_total\": 664.8376203702045,\n      \"status\": \"live\",\n      \"show_remaining\": true,\n      \"twitter_hashtag\": \"string\",\n      \"utc_offset\": \"string\",\n      \"invite_code\": \"string\",\n      \"url\": \"https://UAysLUArxiBmCV.dvcn,\",\n      \"logo_url\": \"http://lVNvMnJtvmxuefgnZUApqNlVJ.efb9FuTrQ,eamgrovsmVBA95jIDXccIemTaFNapJI6ztbqcvQzKJpXbmHwzLlpUP9,\",\n      \"bgimage_url\": \"https://vRpBlDlnOjpNPccADnGqbgpGxkTcbR.pvoezdD-t-Ew-kMllJKdlotpVkcGG\",\n      \"venue\": \"string\",\n      \"dateid\": 101.36614330801818,\n      \"categories\": \"string\",\n      \"language\": \"string\",\n      \"description_html\": \"string\",\n      \"timezone_code\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a93b9914-02f2-4324-a3b2-bc817d2cab0d",
+          "name": "Get event by ID",
+          "request": {
+            "name": "Get event by ID",
+            "description": {
+              "content": "Retrieve details for a specific event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                ":eventid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "eventid",
+                  "description": "(Required) Unique identifier of the event"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8197264f-77e3-423e-acb3-f2247427f73b",
+              "name": "Event details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":eventid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "eventid",
+                      "description": "(Required) Unique identifier of the event"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": [\n    {\n      \"offset\": 7781,\n      \"limit\": 4427,\n      \"total\": 2388\n    },\n    {\n      \"offset\": 2409,\n      \"limit\": 877,\n      \"total\": 1050\n    }\n  ],\n  \"events\": [\n    {\n      \"id\": 3664.2217680621757,\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"currency\": \"string\",\n      \"start_date\": \"1978-11-23T18:35:44.567Z\",\n      \"start_time\": \"string\",\n      \"end_date\": \"1969-12-17T01:45:56.838Z\",\n      \"end_time\": \"string\",\n      \"time_zone\": \"string\",\n      \"tickets_sold\": 9740.188535339583,\n      \"tickets_total\": 8324.41643798624,\n      \"status\": \"completed\",\n      \"show_remaining\": false,\n      \"twitter_hashtag\": \"string\",\n      \"utc_offset\": \"string\",\n      \"invite_code\": \"string\",\n      \"url\": \"https://CLEImSSVDQTqLXipClNtWgAkguIvl.zdzpOlCgQLo\",\n      \"logo_url\": \"https://vpnMZKpedOP.klntw9zJafKpn-7DFqjGMOYOYylawmNZUpQf5HD4-GNN+I93rCSxl\",\n      \"bgimage_url\": \"http://MEJzuUORkNiIZPGPlHPfNvRlCPqP.kueloD2.PLzAF+m2SnO2LNHeKRztGT\",\n      \"venue\": \"string\",\n      \"dateid\": 7061.913330328745,\n      \"categories\": \"string\",\n      \"language\": \"string\",\n      \"description_html\": \"string\",\n      \"timezone_code\": \"string\"\n    },\n    {\n      \"id\": 6950.662244410905,\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"currency\": \"string\",\n      \"start_date\": \"1956-05-10T15:46:07.093Z\",\n      \"start_time\": \"string\",\n      \"end_date\": \"1969-07-29T11:10:38.964Z\",\n      \"end_time\": \"string\",\n      \"time_zone\": \"string\",\n      \"tickets_sold\": 9041.082234677957,\n      \"tickets_total\": 4431.412457512296,\n      \"status\": \"draft\",\n      \"show_remaining\": false,\n      \"twitter_hashtag\": \"string\",\n      \"utc_offset\": \"string\",\n      \"invite_code\": \"string\",\n      \"url\": \"http://UaYGJ.jqxguQezA3Rziq23FTgAPnAxIf6adcSi419UW83kWYZZpFzu.\",\n      \"logo_url\": \"https://zh.rwpEsqGqE0wVGaAp0rvd\",\n      \"bgimage_url\": \"http://bkLtowccvOQiyJYGyNgzklZIpJAhM.bwtblaCJPBenC0ZYuJ93KiYXDqaootC6kWRt1GJn,BBZ-s8YUztg08g+aY4p,5gTr\",\n      \"venue\": \"string\",\n      \"dateid\": 7456.917368340706,\n      \"categories\": \"string\",\n      \"language\": \"string\",\n      \"description_html\": \"string\",\n      \"timezone_code\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89374fda-f771-4691-bb9f-622e5f740e6c",
+          "name": "Toggle event sales",
+          "request": {
+            "name": "Toggle event sales",
+            "description": {
+              "content": "Publish or unpublish an event to start or stop ticket sales.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "togglesales"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventid\": \"<integer>\",\n  \"status\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "526cbde0-a42a-4747-ad79-c513b63c43c1",
+              "name": "Updated event status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "togglesales"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eventid\": \"<integer>\",\n  \"status\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"eventstatus\": \"published\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.eventzillaapi.net/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d80b9f12-99d5-4194-af3f-b82a43a248b2",
+    "name": "Eventzilla Attendees Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.\n\nContact Support:\n Name: Eventzilla Support\n Email: support@eventzilla.net",
+      "type": "text/plain"
+    }
+  }
+}

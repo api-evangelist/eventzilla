@@ -1,0 +1,147 @@
+{
+  "item": [
+    {
+      "id": "9f03d595-d895-4fe6-b3a8-3b5ce2eb34dd",
+      "name": "Tickets",
+      "description": {
+        "content": "Ticket type operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "71d19f13-6296-4a5f-a9f0-0c731d5817bc",
+          "name": "List ticket categories for event",
+          "request": {
+            "name": "List ticket categories for event",
+            "description": {
+              "content": "Retrieve all ticket types and donation options for a specific event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                ":eventid",
+                "tickets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "eventid",
+                  "description": "(Required) Unique identifier of the event"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60aa9deb-7c96-4bdd-b2b7-407d863fb0fc",
+              "name": "Ticket types and donation options",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":eventid",
+                    "tickets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "eventid",
+                      "description": "(Required) Unique identifier of the event"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tickets\": [\n    {\n      \"id\": 4524.496425811481,\n      \"title\": \"string\",\n      \"quantity_total\": \"string\",\n      \"price\": \"string\",\n      \"description\": \"string\",\n      \"sales_start_date\": \"string\",\n      \"sales_start_time\": \"2018-11-29T21:52:15.148Z\",\n      \"sales_end_date\": \"1970-05-25T23:48:53.582Z\",\n      \"sales_end_time\": \"string\",\n      \"group_discount\": \"string\",\n      \"group_percentage\": \"string\",\n      \"group_price\": \"string\",\n      \"additional_instructions\": \"string\",\n      \"unlock_code\": \"string\",\n      \"ticket_type\": \"string\",\n      \"boxoffice_only\": true,\n      \"is_visible\": false,\n      \"limit_minimum\": \"string\",\n      \"limit_maximum\": \"string\",\n      \"allow_partial_payment\": false,\n      \"partial_payment_installments\": \"string\",\n      \"partial_payment_frequency\": \"string\",\n      \"partial_payment_amount\": \"string\"\n    },\n    {\n      \"id\": 3055.273694727164,\n      \"title\": \"string\",\n      \"quantity_total\": \"string\",\n      \"price\": \"string\",\n      \"description\": \"string\",\n      \"sales_start_date\": \"string\",\n      \"sales_start_time\": \"1981-08-11T11:02:39.611Z\",\n      \"sales_end_date\": \"1997-08-17T02:37:36.657Z\",\n      \"sales_end_time\": \"string\",\n      \"group_discount\": \"string\",\n      \"group_percentage\": \"string\",\n      \"group_price\": \"string\",\n      \"additional_instructions\": \"string\",\n      \"unlock_code\": \"string\",\n      \"ticket_type\": \"string\",\n      \"boxoffice_only\": true,\n      \"is_visible\": true,\n      \"limit_minimum\": \"string\",\n      \"limit_maximum\": \"string\",\n      \"allow_partial_payment\": true,\n      \"partial_payment_installments\": \"string\",\n      \"partial_payment_frequency\": \"string\",\n      \"partial_payment_amount\": \"string\"\n    }\n  ],\n  \"donation\": [\n    {\n      \"donationid\": 3354.787043580907,\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"quantity_total\": 9311.14171710296,\n      \"donation_minimum\": \"string\",\n      \"donation_start_date\": \"1961-06-01T00:45:23.889Z\",\n      \"donation_end_date\": \"1955-11-25T15:52:51.817Z\"\n    },\n    {\n      \"donationid\": 137.8735540141085,\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"quantity_total\": 52.770608570376076,\n      \"donation_minimum\": \"string\",\n      \"donation_start_date\": \"2010-04-18T08:38:20.285Z\",\n      \"donation_end_date\": \"2006-10-16T00:54:47.339Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.eventzillaapi.net/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "05e24f6e-f9de-4fcc-b43a-5c4502991afd",
+    "name": "Eventzilla Attendees Tickets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.\n\nContact Support:\n Name: Eventzilla Support\n Email: support@eventzilla.net",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Eventzilla Attendees API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Attendees",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List attendees for event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.eventzillaapi.net/api/v2/events/:eventid/attendees",
+            "params": [
+              {
+                "name": "eventid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the event"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum records per response"
+              }
+            ]
+          },
+          "docs": "Retrieve all attendees for a specific event."
+        },
+        {
+          "info": {
+            "name": "Get attendee by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.eventzillaapi.net/api/v2/attendees/:attendeeid",
+            "params": [
+              {
+                "name": "attendeeid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the attendee"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific attendee."
+        },
+        {
+          "info": {
+            "name": "Check in or revert attendee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.eventzillaapi.net/api/v2/attendees/checkin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Perform a check-in for an attendee or revert a previous check-in."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
