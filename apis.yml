@@ -19,6 +19,12 @@ accessModel:
   method: derived
 image: https://www.eventzilla.net/favicon.ico
 tags:
+  - Event
+  - Ticketing
+  - Registration
+  - Attendees
+  - Event Management
+tags_raw:
   - Events
   - Ticketing
   - Registration
@@ -75,6 +81,8 @@ apis:
   humanURL: https://developer.eventzilla.net/docs/
   baseURL: https://www.eventzillaapi.net/api/v2/
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -103,6 +111,8 @@ apis:
   humanURL: https://developer.eventzilla.net/docs/
   baseURL: https://www.eventzillaapi.net/api/v2/
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
@@ -117,6 +127,8 @@ apis:
   humanURL: https://developer.eventzilla.net/docs/
   baseURL: https://www.eventzillaapi.net/api/v2/
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
