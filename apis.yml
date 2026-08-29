@@ -5,6 +5,18 @@ description: >-
   and attendee check-in workflows. The API uses predictable, resource-oriented
   URLs organized around the JSON format, enabling integrations for event
   creation, attendee management, order processing, and check-in operations.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
