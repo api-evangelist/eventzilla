@@ -151,6 +151,8 @@ apis:
   - type: Authentication
     url: https://developer.eventzilla.net/docs/
 common:
+  - type: Website
+    url: https://www.eventzilla.net/
   - type: AgenticAccess
     url: agentic-access/eventzilla-agentic-access.yml
   - type: DomainSecurity
