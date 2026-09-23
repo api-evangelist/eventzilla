@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Eventzilla Attendees Transactions API
+  title: Eventzilla Transactions API
   description: The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.
   version: '2.0'
   contact:
@@ -137,42 +137,21 @@ paths:
                 $ref: '#/components/schemas/TransactionDetailResponse'
 components:
   schemas:
-    TransactionsListResponse:
+    Pagination:
       type: object
       properties:
-        pagination:
-          type: array
-          items:
-            $ref: '#/components/schemas/Pagination'
-        transactions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Transaction'
-    OrderCancelRequest:
-      type: object
-      required:
-      - checkout_id
-      - eventid
-      properties:
-        checkout_id:
+        offset:
           type: integer
-        eventid:
+        limit:
           type: integer
-        comments:
-          type: string
+        total:
+          type: integer
     OrderCancelResponse:
       type: object
       properties:
         ordercancel:
           type: string
           example: success
-    TransactionDetailResponse:
-      type: object
-      properties:
-        transaction:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionDetail'
     OrderConfirmRequest:
       type: object
       required:
@@ -188,15 +167,36 @@ components:
         sendemail:
           type: boolean
           default: true
-    Pagination:
+    TransactionsListResponse:
       type: object
       properties:
-        offset:
+        pagination:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pagination'
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+    TransactionDetailResponse:
+      type: object
+      properties:
+        transaction:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionDetail'
+    OrderCancelRequest:
+      type: object
+      required:
+      - checkout_id
+      - eventid
+      properties:
+        checkout_id:
           type: integer
-        limit:
+        eventid:
           type: integer
-        total:
-          type: integer
+        comments:
+          type: string
     TransactionDetail:
       type: object
       properties:

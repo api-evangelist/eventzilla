@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Eventzilla Attendees Tickets API
+  title: Eventzilla Tickets API
   description: The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.
   version: '2.0'
   contact:

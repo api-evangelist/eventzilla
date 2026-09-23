@@ -1,13 +1,7 @@
 {
   "provider": "eventzilla",
   "sources": [
-    "eventzilla-attendees-api-openapi.yml",
-    "eventzilla-categories-api-openapi.yml",
-    "eventzilla-checkout-api-openapi.yml",
-    "eventzilla-events-api-openapi.yml",
-    "eventzilla-tickets-api-openapi.yml",
-    "eventzilla-transactions-api-openapi.yml",
-    "eventzilla-users-api-openapi.yml"
+    "_original/openapi.yml"
   ],
   "outputs": [
     "eventzilla-attendees-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "eventzilla-attendees-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "eventzilla-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "eventzilla-checkout-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "eventzilla-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "eventzilla-tickets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "eventzilla-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "eventzilla-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

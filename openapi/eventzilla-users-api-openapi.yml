@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Eventzilla Attendees Users API
+  title: Eventzilla Users API
   description: The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.
   version: '2.0'
   contact:
@@ -70,6 +70,26 @@ paths:
                 $ref: '#/components/schemas/UsersResponse'
 components:
   schemas:
+    Pagination:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+    UsersResponse:
+      type: object
+      properties:
+        pagination:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pagination'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
     User:
       type: object
       properties:
@@ -119,26 +139,6 @@ components:
           enum:
           - organizer
           - sub-organizer
-    Pagination:
-      type: object
-      properties:
-        offset:
-          type: integer
-        limit:
-          type: integer
-        total:
-          type: integer
-    UsersResponse:
-      type: object
-      properties:
-        pagination:
-          type: array
-          items:
-            $ref: '#/components/schemas/Pagination'
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

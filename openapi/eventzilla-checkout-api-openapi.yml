@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Eventzilla Attendees Checkout API
+  title: Eventzilla Checkout API
   description: The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.
   version: '2.0'
   contact:
@@ -109,6 +109,48 @@ paths:
                 $ref: '#/components/schemas/CheckoutConfirmResponse'
 components:
   schemas:
+    BuyerDetails:
+      type: object
+      properties:
+        buyer_firstname:
+          type: string
+        buyer_lastname:
+          type: string
+        buyer_email:
+          type: string
+          format: email
+    Tax:
+      type: object
+      properties:
+        tax_type:
+          type: string
+        tax_name:
+          type: string
+        tax_value:
+          type: string
+    CheckoutPrepareResponse:
+      type: object
+      properties:
+        payment_options:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentOption'
+        tickettypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketTypeOption'
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
+        discount_enabled:
+          type: boolean
+        tax_enabled:
+          type: boolean
+        tax:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tax'
     CheckoutTicket:
       type: object
       properties:
@@ -117,6 +159,65 @@ components:
         ticket_type_id:
           type: number
         ticket_type_name:
+          type: string
+    CheckoutConfirmResponse:
+      type: object
+      properties:
+        checkout_id:
+          type: number
+        transaction_ref:
+          type: string
+        transaction_total:
+          type: number
+        transaction_tax:
+          type: number
+        transaction_discount:
+          type: number
+        eventzilla_fee:
+          type: number
+        transaction_status:
+          type: string
+        confirmation_email_sent:
+          type: boolean
+        currency:
+          type: string
+    TicketTypeOption:
+      type: object
+      properties:
+        ticket_type_id:
+          type: number
+        ticket_type_name:
+          type: string
+        ticket_type_price:
+          type: string
+        ticket_type_min_limit:
+          type: number
+        ticket_type_max_limit:
+          type: number
+        ticket_type_avail_quantity:
+          type: number
+        ticket_type_onsale:
+          type: boolean
+        ticket_type_description:
+          type: string
+    CheckoutFillOrderResponse:
+      type: object
+      properties:
+        checkout_id:
+          type: number
+        transaction_ref:
+          type: string
+        transaction_total:
+          type: number
+        transaction_tax:
+          type: number
+        transaction_discount:
+          type: number
+        transaction_status:
+          type: string
+        eventzilla_fee:
+          type: number
+        currency:
           type: string
     CheckoutFillOrderRequest:
       type: object
@@ -144,6 +245,37 @@ components:
             $ref: '#/components/schemas/TicketFillItem'
         payment_id:
           type: integer
+    PaymentOption:
+      type: object
+      properties:
+        payment_id:
+          type: number
+        paymentoption_name:
+          type: string
+    CheckoutCreateRequest:
+      type: object
+      required:
+      - eventid
+      - eventdateid
+      - ticket_types
+      properties:
+        eventid:
+          type: integer
+        eventdateid:
+          type: integer
+        ticket_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketSelection'
+        discount_code:
+          type: string
+    AnswerItem:
+      type: object
+      properties:
+        question_id:
+          type: number
+        answer_text:
+          type: string
     Question:
       type: object
       properties:
@@ -164,102 +296,13 @@ components:
         subquestion_rules:
           type: array
           items: {}
-    PaymentOption:
+    TicketSelection:
       type: object
       properties:
-        payment_id:
+        ticket_type_id:
           type: number
-        paymentoption_name:
-          type: string
-    AnswerItem:
-      type: object
-      properties:
-        question_id:
+        quantity:
           type: number
-        answer_text:
-          type: string
-    CheckoutPrepareResponse:
-      type: object
-      properties:
-        payment_options:
-          type: array
-          items:
-            $ref: '#/components/schemas/PaymentOption'
-        tickettypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketTypeOption'
-        questions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Question'
-        discount_enabled:
-          type: boolean
-        tax_enabled:
-          type: boolean
-        tax:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tax'
-    Tax:
-      type: object
-      properties:
-        tax_type:
-          type: string
-        tax_name:
-          type: string
-        tax_value:
-          type: string
-    BuyerDetails:
-      type: object
-      properties:
-        buyer_firstname:
-          type: string
-        buyer_lastname:
-          type: string
-        buyer_email:
-          type: string
-          format: email
-    CheckoutFillOrderResponse:
-      type: object
-      properties:
-        checkout_id:
-          type: number
-        transaction_ref:
-          type: string
-        transaction_total:
-          type: number
-        transaction_tax:
-          type: number
-        transaction_discount:
-          type: number
-        transaction_status:
-          type: string
-        eventzilla_fee:
-          type: number
-        currency:
-          type: string
-    CheckoutConfirmResponse:
-      type: object
-      properties:
-        checkout_id:
-          type: number
-        transaction_ref:
-          type: string
-        transaction_total:
-          type: number
-        transaction_tax:
-          type: number
-        transaction_discount:
-          type: number
-        eventzilla_fee:
-          type: number
-        transaction_status:
-          type: string
-        confirmation_email_sent:
-          type: boolean
-        currency:
-          type: string
     CheckoutCreateResponse:
       type: object
       properties:
@@ -281,49 +324,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CheckoutTicket'
-    CheckoutCreateRequest:
-      type: object
-      required:
-      - eventid
-      - eventdateid
-      - ticket_types
-      properties:
-        eventid:
-          type: integer
-        eventdateid:
-          type: integer
-        ticket_types:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketSelection'
-        discount_code:
-          type: string
-    TicketTypeOption:
-      type: object
-      properties:
-        ticket_type_id:
-          type: number
-        ticket_type_name:
-          type: string
-        ticket_type_price:
-          type: string
-        ticket_type_min_limit:
-          type: number
-        ticket_type_max_limit:
-          type: number
-        ticket_type_avail_quantity:
-          type: number
-        ticket_type_onsale:
-          type: boolean
-        ticket_type_description:
-          type: string
-    TicketSelection:
-      type: object
-      properties:
-        ticket_type_id:
-          type: number
-        quantity:
-          type: number
     TicketFillItem:
       type: object
       properties:

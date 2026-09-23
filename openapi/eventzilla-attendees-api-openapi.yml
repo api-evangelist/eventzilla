@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Eventzilla Attendees API
   description: The Eventzilla REST API provides access to event management operations including listing and retrieving events, managing ticket categories, processing registrations and orders, managing attendees, performing check-ins, and handling checkout workflows. Authentication is via an API key passed in the x-api-key request header.
@@ -96,73 +96,6 @@ paths:
                 $ref: '#/components/schemas/CheckinResponse'
 components:
   schemas:
-    AttendeeDetail:
-      type: object
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        ticket_type:
-          type: string
-        bar_code:
-          type: string
-        is_attended:
-          type: string
-        questions:
-          type: array
-          items:
-            type: object
-            properties:
-              questions:
-                type: string
-              answer:
-                type: string
-        refno:
-          type: string
-        id:
-          type: string
-        transaction_date:
-          type: string
-        transaction_amount:
-          type: string
-        transaction_status:
-          type: string
-        title:
-          type: string
-        email:
-          type: string
-          format: email
-        buyer_first_name:
-          type: string
-        buyer_last_name:
-          type: string
-        payment_type:
-          type: string
-        event_id:
-          type: number
-        event_date:
-          type: string
-          format: date-time
-    CheckinRequest:
-      type: object
-      required:
-      - barcode
-      - eventcheckin
-      properties:
-        barcode:
-          type: string
-          description: Attendee barcode
-        eventcheckin:
-          type: boolean
-          description: true to check in, false to revert check-in
-    AttendeesListResponse:
-      type: object
-      properties:
-        attendees:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttendeeListItem'
     AttendeeListItem:
       type: object
       properties:
@@ -212,6 +145,13 @@ components:
           type: string
         payment_type:
           type: string
+    AttendeesListResponse:
+      type: object
+      properties:
+        attendees:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttendeeListItem'
     AttendeeDetailResponse:
       type: object
       properties:
@@ -219,6 +159,66 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AttendeeDetail'
+    CheckinRequest:
+      type: object
+      required:
+      - barcode
+      - eventcheckin
+      properties:
+        barcode:
+          type: string
+          description: Attendee barcode
+        eventcheckin:
+          type: boolean
+          description: true to check in, false to revert check-in
+    AttendeeDetail:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        ticket_type:
+          type: string
+        bar_code:
+          type: string
+        is_attended:
+          type: string
+        questions:
+          type: array
+          items:
+            type: object
+            properties:
+              questions:
+                type: string
+              answer:
+                type: string
+        refno:
+          type: string
+        id:
+          type: string
+        transaction_date:
+          type: string
+        transaction_amount:
+          type: string
+        transaction_status:
+          type: string
+        title:
+          type: string
+        email:
+          type: string
+          format: email
+        buyer_first_name:
+          type: string
+        buyer_last_name:
+          type: string
+        payment_type:
+          type: string
+        event_id:
+          type: number
+        event_date:
+          type: string
+          format: date-time
     CheckinResponse:
       type: object
       properties:
