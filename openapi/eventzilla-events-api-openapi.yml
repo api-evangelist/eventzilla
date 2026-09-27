@@ -105,34 +105,6 @@ paths:
                 $ref: '#/components/schemas/ToggleSalesResponse'
 components:
   schemas:
-    Pagination:
-      type: object
-      properties:
-        offset:
-          type: integer
-        limit:
-          type: integer
-        total:
-          type: integer
-    ToggleSalesRequest:
-      type: object
-      required:
-      - eventid
-      - status
-      properties:
-        eventid:
-          type: integer
-        status:
-          type: boolean
-          description: true to publish, false to unpublish
-    ToggleSalesResponse:
-      type: object
-      properties:
-        eventstatus:
-          type: string
-          enum:
-          - published
-          - unpublished
     Event:
       type: object
       properties:
@@ -196,6 +168,14 @@ components:
           type: string
         timezone_code:
           type: string
+    ToggleSalesResponse:
+      type: object
+      properties:
+        eventstatus:
+          type: string
+          enum:
+          - published
+          - unpublished
     EventsResponse:
       type: object
       properties:
@@ -207,6 +187,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
+    ToggleSalesRequest:
+      type: object
+      required:
+      - eventid
+      - status
+      properties:
+        eventid:
+          type: integer
+        status:
+          type: boolean
+          description: true to publish, false to unpublish
+    Pagination:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

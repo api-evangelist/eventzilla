@@ -137,21 +137,6 @@ paths:
                 $ref: '#/components/schemas/TransactionDetailResponse'
 components:
   schemas:
-    Pagination:
-      type: object
-      properties:
-        offset:
-          type: integer
-        limit:
-          type: integer
-        total:
-          type: integer
-    OrderCancelResponse:
-      type: object
-      properties:
-        ordercancel:
-          type: string
-          example: success
     OrderConfirmRequest:
       type: object
       required:
@@ -167,79 +152,12 @@ components:
         sendemail:
           type: boolean
           default: true
-    TransactionsListResponse:
+    OrderCancelResponse:
       type: object
       properties:
-        pagination:
-          type: array
-          items:
-            $ref: '#/components/schemas/Pagination'
-        transactions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Transaction'
-    TransactionDetailResponse:
-      type: object
-      properties:
-        transaction:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionDetail'
-    OrderCancelRequest:
-      type: object
-      required:
-      - checkout_id
-      - eventid
-      properties:
-        checkout_id:
-          type: integer
-        eventid:
-          type: integer
-        comments:
+        ordercancel:
           type: string
-    TransactionDetail:
-      type: object
-      properties:
-        refno:
-          type: string
-        checkout_id:
-          type: number
-        transaction_date:
-          type: string
-        transaction_amount:
-          type: number
-        tickets_in_transaction:
-          type: number
-        event_date:
-          type: string
-          format: date-time
-        transaction_status:
-          type: string
-        user_id:
-          type: number
-        event_id:
-          type: number
-        title:
-          type: string
-        email:
-          type: string
-          format: email
-        buyer_first_name:
-          type: string
-        buyer_last_name:
-          type: string
-        promo_code:
-          type: string
-        payment_type:
-          type: string
-        comments:
-          type: string
-        transaction_tax:
-          type: number
-        transaction_discount:
-          type: number
-        eventzilla_fee:
-          type: number
+          example: success
     Transaction:
       type: object
       properties:
@@ -283,6 +201,88 @@ components:
         orderconfirm:
           type: string
           example: success
+    TransactionDetailResponse:
+      type: object
+      properties:
+        transaction:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionDetail'
+    OrderCancelRequest:
+      type: object
+      required:
+      - checkout_id
+      - eventid
+      properties:
+        checkout_id:
+          type: integer
+        eventid:
+          type: integer
+        comments:
+          type: string
+    TransactionsListResponse:
+      type: object
+      properties:
+        pagination:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pagination'
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+    TransactionDetail:
+      type: object
+      properties:
+        refno:
+          type: string
+        checkout_id:
+          type: number
+        transaction_date:
+          type: string
+        transaction_amount:
+          type: number
+        tickets_in_transaction:
+          type: number
+        event_date:
+          type: string
+          format: date-time
+        transaction_status:
+          type: string
+        user_id:
+          type: number
+        event_id:
+          type: number
+        title:
+          type: string
+        email:
+          type: string
+          format: email
+        buyer_first_name:
+          type: string
+        buyer_last_name:
+          type: string
+        promo_code:
+          type: string
+        payment_type:
+          type: string
+        comments:
+          type: string
+        transaction_tax:
+          type: number
+        transaction_discount:
+          type: number
+        eventzilla_fee:
+          type: number
+    Pagination:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

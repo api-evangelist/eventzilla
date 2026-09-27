@@ -119,14 +119,12 @@ components:
         buyer_email:
           type: string
           format: email
-    Tax:
+    PaymentOption:
       type: object
       properties:
-        tax_type:
-          type: string
-        tax_name:
-          type: string
-        tax_value:
+        payment_id:
+          type: number
+        paymentoption_name:
           type: string
     CheckoutPrepareResponse:
       type: object
@@ -151,15 +149,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Tax'
-    CheckoutTicket:
+    Question:
       type: object
       properties:
-        ticket_price_id:
+        question_id:
           type: number
-        ticket_type_id:
-          type: number
-        ticket_type_name:
+        question_type:
           type: string
+        question_text:
+          type: string
+        question_choices:
+          type: array
+          items:
+            type: string
+        question_waiver:
+          type: string
+        has_subquestion:
+          type: boolean
+        subquestion_rules:
+          type: array
+          items: {}
     CheckoutConfirmResponse:
       type: object
       properties:
@@ -181,43 +190,49 @@ components:
           type: boolean
         currency:
           type: string
-    TicketTypeOption:
+    CheckoutConfirmRequest:
+      type: object
+      required:
+      - eventid
+      - eventdateid
+      - checkout_id
+      - payment_status
+      properties:
+        eventid:
+          type: integer
+        eventdateid:
+          type: integer
+        checkout_id:
+          type: integer
+        payment_status:
+          type: string
+        comments:
+          type: string
+        sendemail:
+          type: boolean
+          default: true
+    TicketSelection:
       type: object
       properties:
         ticket_type_id:
           type: number
-        ticket_type_name:
-          type: string
-        ticket_type_price:
-          type: string
-        ticket_type_min_limit:
+        quantity:
           type: number
-        ticket_type_max_limit:
-          type: number
-        ticket_type_avail_quantity:
-          type: number
-        ticket_type_onsale:
-          type: boolean
-        ticket_type_description:
-          type: string
-    CheckoutFillOrderResponse:
+    AnswerItem:
       type: object
       properties:
-        checkout_id:
+        question_id:
           type: number
-        transaction_ref:
+        answer_text:
           type: string
-        transaction_total:
-          type: number
-        transaction_tax:
-          type: number
-        transaction_discount:
-          type: number
-        transaction_status:
+    Tax:
+      type: object
+      properties:
+        tax_type:
           type: string
-        eventzilla_fee:
-          type: number
-        currency:
+        tax_name:
+          type: string
+        tax_value:
           type: string
     CheckoutFillOrderRequest:
       type: object
@@ -245,13 +260,22 @@ components:
             $ref: '#/components/schemas/TicketFillItem'
         payment_id:
           type: integer
-    PaymentOption:
+    TicketFillItem:
       type: object
       properties:
-        payment_id:
+        ticket_price_id:
           type: number
-        paymentoption_name:
+        first_name:
           type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnswerItem'
     CheckoutCreateRequest:
       type: object
       required:
@@ -269,40 +293,34 @@ components:
             $ref: '#/components/schemas/TicketSelection'
         discount_code:
           type: string
-    AnswerItem:
+    CheckoutTicket:
       type: object
       properties:
-        question_id:
+        ticket_price_id:
           type: number
-        answer_text:
-          type: string
-    Question:
-      type: object
-      properties:
-        question_id:
-          type: number
-        question_type:
-          type: string
-        question_text:
-          type: string
-        question_choices:
-          type: array
-          items:
-            type: string
-        question_waiver:
-          type: string
-        has_subquestion:
-          type: boolean
-        subquestion_rules:
-          type: array
-          items: {}
-    TicketSelection:
-      type: object
-      properties:
         ticket_type_id:
           type: number
-        quantity:
+        ticket_type_name:
+          type: string
+    CheckoutFillOrderResponse:
+      type: object
+      properties:
+        checkout_id:
           type: number
+        transaction_ref:
+          type: string
+        transaction_total:
+          type: number
+        transaction_tax:
+          type: number
+        transaction_discount:
+          type: number
+        transaction_status:
+          type: string
+        eventzilla_fee:
+          type: number
+        currency:
+          type: string
     CheckoutCreateResponse:
       type: object
       properties:
@@ -324,43 +342,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CheckoutTicket'
-    TicketFillItem:
+    TicketTypeOption:
       type: object
       properties:
-        ticket_price_id:
+        ticket_type_id:
           type: number
-        first_name:
+        ticket_type_name:
           type: string
-        last_name:
+        ticket_type_price:
           type: string
-        email:
-          type: string
-          format: email
-        answers:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnswerItem'
-    CheckoutConfirmRequest:
-      type: object
-      required:
-      - eventid
-      - eventdateid
-      - checkout_id
-      - payment_status
-      properties:
-        eventid:
-          type: integer
-        eventdateid:
-          type: integer
-        checkout_id:
-          type: integer
-        payment_status:
-          type: string
-        comments:
-          type: string
-        sendemail:
+        ticket_type_min_limit:
+          type: number
+        ticket_type_max_limit:
+          type: number
+        ticket_type_avail_quantity:
+          type: number
+        ticket_type_onsale:
           type: boolean
-          default: true
+        ticket_type_description:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

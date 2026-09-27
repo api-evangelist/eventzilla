@@ -54,6 +54,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Donation'
+    Donation:
+      type: object
+      properties:
+        donationid:
+          type: number
+        title:
+          type: string
+        description:
+          type: string
+        quantity_total:
+          type: number
+        donation_minimum:
+          type: string
+        donation_start_date:
+          type: string
+          format: date-time
+        donation_end_date:
+          type: string
+          format: date-time
     Ticket:
       type: object
       properties:
@@ -105,25 +124,6 @@ components:
           type: string
         partial_payment_amount:
           type: string
-    Donation:
-      type: object
-      properties:
-        donationid:
-          type: number
-        title:
-          type: string
-        description:
-          type: string
-        quantity_total:
-          type: number
-        donation_minimum:
-          type: string
-        donation_start_date:
-          type: string
-          format: date-time
-        donation_end_date:
-          type: string
-          format: date-time
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
