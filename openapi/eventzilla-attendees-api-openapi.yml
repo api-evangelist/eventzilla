@@ -96,6 +96,25 @@ paths:
                 $ref: '#/components/schemas/CheckinResponse'
 components:
   schemas:
+    CheckinRequest:
+      type: object
+      required:
+      - barcode
+      - eventcheckin
+      properties:
+        barcode:
+          type: string
+          description: Attendee barcode
+        eventcheckin:
+          type: boolean
+          description: true to check in, false to revert check-in
+    AttendeesListResponse:
+      type: object
+      properties:
+        attendees:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttendeeListItem'
     AttendeeDetail:
       type: object
       properties:
@@ -144,20 +163,6 @@ components:
         event_date:
           type: string
           format: date-time
-    AttendeesListResponse:
-      type: object
-      properties:
-        attendees:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttendeeListItem'
-    AttendeeDetailResponse:
-      type: object
-      properties:
-        attendees:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttendeeDetail'
     AttendeeListItem:
       type: object
       properties:
@@ -207,18 +212,13 @@ components:
           type: string
         payment_type:
           type: string
-    CheckinRequest:
+    AttendeeDetailResponse:
       type: object
-      required:
-      - barcode
-      - eventcheckin
       properties:
-        barcode:
-          type: string
-          description: Attendee barcode
-        eventcheckin:
-          type: boolean
-          description: true to check in, false to revert check-in
+        attendees:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttendeeDetail'
     CheckinResponse:
       type: object
       properties:

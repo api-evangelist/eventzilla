@@ -36,12 +36,6 @@ paths:
                 $ref: '#/components/schemas/CategoriesResponse'
 components:
   schemas:
-    Category:
-      type: object
-      properties:
-        category:
-          type: string
-          example: Business
     CategoriesResponse:
       type: object
       properties:
@@ -49,6 +43,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Category'
+    Category:
+      type: object
+      properties:
+        category:
+          type: string
+          example: Business
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

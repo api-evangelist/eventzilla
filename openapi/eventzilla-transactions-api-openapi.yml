@@ -137,70 +137,6 @@ paths:
                 $ref: '#/components/schemas/TransactionDetailResponse'
 components:
   schemas:
-    OrderConfirmRequest:
-      type: object
-      required:
-      - checkout_id
-      - eventid
-      properties:
-        checkout_id:
-          type: integer
-        eventid:
-          type: integer
-        comments:
-          type: string
-        sendemail:
-          type: boolean
-          default: true
-    OrderCancelResponse:
-      type: object
-      properties:
-        ordercancel:
-          type: string
-          example: success
-    Transaction:
-      type: object
-      properties:
-        transaction_ref:
-          type: string
-        checkout_id:
-          type: number
-        transaction_date:
-          type: string
-        transaction_amount:
-          type: string
-        tickets_in_transaction:
-          type: number
-        event_date:
-          type: string
-          format: date-time
-        transaction_status:
-          type: string
-        user_id:
-          type: number
-        event_id:
-          type: number
-        title:
-          type: string
-        email:
-          type: string
-          format: email
-        buyer_first_name:
-          type: string
-        buyer_last_name:
-          type: string
-        promo_code:
-          type: string
-        payment_type:
-          type: string
-        comments:
-          type: string
-    OrderConfirmResponse:
-      type: object
-      properties:
-        orderconfirm:
-          type: string
-          example: success
     TransactionDetailResponse:
       type: object
       properties:
@@ -208,18 +144,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TransactionDetail'
-    OrderCancelRequest:
-      type: object
-      required:
-      - checkout_id
-      - eventid
-      properties:
-        checkout_id:
-          type: integer
-        eventid:
-          type: integer
-        comments:
-          type: string
     TransactionsListResponse:
       type: object
       properties:
@@ -231,6 +155,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Transaction'
+    OrderConfirmResponse:
+      type: object
+      properties:
+        orderconfirm:
+          type: string
+          example: success
+    Pagination:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
     TransactionDetail:
       type: object
       properties:
@@ -274,15 +213,76 @@ components:
           type: number
         eventzilla_fee:
           type: number
-    Pagination:
+    OrderConfirmRequest:
+      type: object
+      required:
+      - checkout_id
+      - eventid
+      properties:
+        checkout_id:
+          type: integer
+        eventid:
+          type: integer
+        comments:
+          type: string
+        sendemail:
+          type: boolean
+          default: true
+    OrderCancelResponse:
       type: object
       properties:
-        offset:
+        ordercancel:
+          type: string
+          example: success
+    OrderCancelRequest:
+      type: object
+      required:
+      - checkout_id
+      - eventid
+      properties:
+        checkout_id:
           type: integer
-        limit:
+        eventid:
           type: integer
-        total:
-          type: integer
+        comments:
+          type: string
+    Transaction:
+      type: object
+      properties:
+        transaction_ref:
+          type: string
+        checkout_id:
+          type: number
+        transaction_date:
+          type: string
+        transaction_amount:
+          type: string
+        tickets_in_transaction:
+          type: number
+        event_date:
+          type: string
+          format: date-time
+        transaction_status:
+          type: string
+        user_id:
+          type: number
+        event_id:
+          type: number
+        title:
+          type: string
+        email:
+          type: string
+          format: email
+        buyer_first_name:
+          type: string
+        buyer_last_name:
+          type: string
+        promo_code:
+          type: string
+        payment_type:
+          type: string
+        comments:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

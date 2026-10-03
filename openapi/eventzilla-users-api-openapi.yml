@@ -79,6 +79,17 @@ components:
           type: integer
         total:
           type: integer
+    UsersResponse:
+      type: object
+      properties:
+        pagination:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pagination'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
     User:
       type: object
       properties:
@@ -128,17 +139,6 @@ components:
           enum:
           - organizer
           - sub-organizer
-    UsersResponse:
-      type: object
-      properties:
-        pagination:
-          type: array
-          items:
-            $ref: '#/components/schemas/Pagination'
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
