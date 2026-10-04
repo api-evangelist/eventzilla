@@ -137,39 +137,6 @@ paths:
                 $ref: '#/components/schemas/TransactionDetailResponse'
 components:
   schemas:
-    TransactionDetailResponse:
-      type: object
-      properties:
-        transaction:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionDetail'
-    TransactionsListResponse:
-      type: object
-      properties:
-        pagination:
-          type: array
-          items:
-            $ref: '#/components/schemas/Pagination'
-        transactions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Transaction'
-    OrderConfirmResponse:
-      type: object
-      properties:
-        orderconfirm:
-          type: string
-          example: success
-    Pagination:
-      type: object
-      properties:
-        offset:
-          type: integer
-        limit:
-          type: integer
-        total:
-          type: integer
     TransactionDetail:
       type: object
       properties:
@@ -213,39 +180,23 @@ components:
           type: number
         eventzilla_fee:
           type: number
-    OrderConfirmRequest:
-      type: object
-      required:
-      - checkout_id
-      - eventid
-      properties:
-        checkout_id:
-          type: integer
-        eventid:
-          type: integer
-        comments:
-          type: string
-        sendemail:
-          type: boolean
-          default: true
-    OrderCancelResponse:
+    TransactionsListResponse:
       type: object
       properties:
-        ordercancel:
+        pagination:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pagination'
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+    OrderConfirmResponse:
+      type: object
+      properties:
+        orderconfirm:
           type: string
           example: success
-    OrderCancelRequest:
-      type: object
-      required:
-      - checkout_id
-      - eventid
-      properties:
-        checkout_id:
-          type: integer
-        eventid:
-          type: integer
-        comments:
-          type: string
     Transaction:
       type: object
       properties:
@@ -283,6 +234,55 @@ components:
           type: string
         comments:
           type: string
+    OrderCancelResponse:
+      type: object
+      properties:
+        ordercancel:
+          type: string
+          example: success
+    Pagination:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+    OrderCancelRequest:
+      type: object
+      required:
+      - checkout_id
+      - eventid
+      properties:
+        checkout_id:
+          type: integer
+        eventid:
+          type: integer
+        comments:
+          type: string
+    OrderConfirmRequest:
+      type: object
+      required:
+      - checkout_id
+      - eventid
+      properties:
+        checkout_id:
+          type: integer
+        eventid:
+          type: integer
+        comments:
+          type: string
+        sendemail:
+          type: boolean
+          default: true
+    TransactionDetailResponse:
+      type: object
+      properties:
+        transaction:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionDetail'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

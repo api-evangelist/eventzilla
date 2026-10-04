@@ -105,6 +105,26 @@ paths:
                 $ref: '#/components/schemas/ToggleSalesResponse'
 components:
   schemas:
+    Pagination:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+    EventsResponse:
+      type: object
+      properties:
+        pagination:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pagination'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
     Event:
       type: object
       properties:
@@ -168,26 +188,6 @@ components:
           type: string
         timezone_code:
           type: string
-    EventsResponse:
-      type: object
-      properties:
-        pagination:
-          type: array
-          items:
-            $ref: '#/components/schemas/Pagination'
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
-    Pagination:
-      type: object
-      properties:
-        offset:
-          type: integer
-        limit:
-          type: integer
-        total:
-          type: integer
     ToggleSalesResponse:
       type: object
       properties:
