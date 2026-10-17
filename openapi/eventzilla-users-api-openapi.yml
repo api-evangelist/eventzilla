@@ -70,26 +70,6 @@ paths:
                 $ref: '#/components/schemas/UsersResponse'
 components:
   schemas:
-    Pagination:
-      type: object
-      properties:
-        offset:
-          type: integer
-        limit:
-          type: integer
-        total:
-          type: integer
-    UsersResponse:
-      type: object
-      properties:
-        pagination:
-          type: array
-          items:
-            $ref: '#/components/schemas/Pagination'
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
     User:
       type: object
       properties:
@@ -139,6 +119,26 @@ components:
           enum:
           - organizer
           - sub-organizer
+    UsersResponse:
+      type: object
+      properties:
+        pagination:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pagination'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    Pagination:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

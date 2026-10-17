@@ -109,6 +109,52 @@ paths:
                 $ref: '#/components/schemas/CheckoutConfirmResponse'
 components:
   schemas:
+    CheckoutPrepareResponse:
+      type: object
+      properties:
+        payment_options:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentOption'
+        tickettypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketTypeOption'
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
+        discount_enabled:
+          type: boolean
+        tax_enabled:
+          type: boolean
+        tax:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tax'
+    AnswerItem:
+      type: object
+      properties:
+        question_id:
+          type: number
+        answer_text:
+          type: string
+    TicketFillItem:
+      type: object
+      properties:
+        ticket_price_id:
+          type: number
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnswerItem'
     PaymentOption:
       type: object
       properties:
@@ -137,14 +183,72 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CheckoutTicket'
-    Tax:
+    TicketSelection:
       type: object
       properties:
-        tax_type:
+        ticket_type_id:
+          type: number
+        quantity:
+          type: number
+    Question:
+      type: object
+      properties:
+        question_id:
+          type: number
+        question_type:
           type: string
-        tax_name:
+        question_text:
           type: string
-        tax_value:
+        question_choices:
+          type: array
+          items:
+            type: string
+        question_waiver:
+          type: string
+        has_subquestion:
+          type: boolean
+        subquestion_rules:
+          type: array
+          items: {}
+    TicketTypeOption:
+      type: object
+      properties:
+        ticket_type_id:
+          type: number
+        ticket_type_name:
+          type: string
+        ticket_type_price:
+          type: string
+        ticket_type_min_limit:
+          type: number
+        ticket_type_max_limit:
+          type: number
+        ticket_type_avail_quantity:
+          type: number
+        ticket_type_onsale:
+          type: boolean
+        ticket_type_description:
+          type: string
+    CheckoutConfirmResponse:
+      type: object
+      properties:
+        checkout_id:
+          type: number
+        transaction_ref:
+          type: string
+        transaction_total:
+          type: number
+        transaction_tax:
+          type: number
+        transaction_discount:
+          type: number
+        eventzilla_fee:
+          type: number
+        transaction_status:
+          type: string
+        confirmation_email_sent:
+          type: boolean
+        currency:
           type: string
     CheckoutConfirmRequest:
       type: object
@@ -167,6 +271,51 @@ components:
         sendemail:
           type: boolean
           default: true
+    Tax:
+      type: object
+      properties:
+        tax_type:
+          type: string
+        tax_name:
+          type: string
+        tax_value:
+          type: string
+    BuyerDetails:
+      type: object
+      properties:
+        buyer_firstname:
+          type: string
+        buyer_lastname:
+          type: string
+        buyer_email:
+          type: string
+          format: email
+    CheckoutCreateRequest:
+      type: object
+      required:
+      - eventid
+      - eventdateid
+      - ticket_types
+      properties:
+        eventid:
+          type: integer
+        eventdateid:
+          type: integer
+        ticket_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketSelection'
+        discount_code:
+          type: string
+    CheckoutTicket:
+      type: object
+      properties:
+        ticket_price_id:
+          type: number
+        ticket_type_id:
+          type: number
+        ticket_type_name:
+          type: string
     CheckoutFillOrderRequest:
       type: object
       required:
@@ -212,155 +361,6 @@ components:
           type: number
         currency:
           type: string
-    BuyerDetails:
-      type: object
-      properties:
-        buyer_firstname:
-          type: string
-        buyer_lastname:
-          type: string
-        buyer_email:
-          type: string
-          format: email
-    TicketFillItem:
-      type: object
-      properties:
-        ticket_price_id:
-          type: number
-        first_name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-          format: email
-        answers:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnswerItem'
-    AnswerItem:
-      type: object
-      properties:
-        question_id:
-          type: number
-        answer_text:
-          type: string
-    CheckoutTicket:
-      type: object
-      properties:
-        ticket_price_id:
-          type: number
-        ticket_type_id:
-          type: number
-        ticket_type_name:
-          type: string
-    TicketTypeOption:
-      type: object
-      properties:
-        ticket_type_id:
-          type: number
-        ticket_type_name:
-          type: string
-        ticket_type_price:
-          type: string
-        ticket_type_min_limit:
-          type: number
-        ticket_type_max_limit:
-          type: number
-        ticket_type_avail_quantity:
-          type: number
-        ticket_type_onsale:
-          type: boolean
-        ticket_type_description:
-          type: string
-    TicketSelection:
-      type: object
-      properties:
-        ticket_type_id:
-          type: number
-        quantity:
-          type: number
-    CheckoutConfirmResponse:
-      type: object
-      properties:
-        checkout_id:
-          type: number
-        transaction_ref:
-          type: string
-        transaction_total:
-          type: number
-        transaction_tax:
-          type: number
-        transaction_discount:
-          type: number
-        eventzilla_fee:
-          type: number
-        transaction_status:
-          type: string
-        confirmation_email_sent:
-          type: boolean
-        currency:
-          type: string
-    Question:
-      type: object
-      properties:
-        question_id:
-          type: number
-        question_type:
-          type: string
-        question_text:
-          type: string
-        question_choices:
-          type: array
-          items:
-            type: string
-        question_waiver:
-          type: string
-        has_subquestion:
-          type: boolean
-        subquestion_rules:
-          type: array
-          items: {}
-    CheckoutCreateRequest:
-      type: object
-      required:
-      - eventid
-      - eventdateid
-      - ticket_types
-      properties:
-        eventid:
-          type: integer
-        eventdateid:
-          type: integer
-        ticket_types:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketSelection'
-        discount_code:
-          type: string
-    CheckoutPrepareResponse:
-      type: object
-      properties:
-        payment_options:
-          type: array
-          items:
-            $ref: '#/components/schemas/PaymentOption'
-        tickettypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/TicketTypeOption'
-        questions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Question'
-        discount_enabled:
-          type: boolean
-        tax_enabled:
-          type: boolean
-        tax:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tax'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

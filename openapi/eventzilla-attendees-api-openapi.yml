@@ -96,55 +96,6 @@ paths:
                 $ref: '#/components/schemas/CheckinResponse'
 components:
   schemas:
-    AttendeeListItem:
-      type: object
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        ticket_type:
-          type: string
-        bar_code:
-          type: string
-        is_attended:
-          type: string
-        questions:
-          type: array
-          items:
-            type: object
-            properties:
-              questions:
-                type: string
-              answer:
-                type: string
-        transaction_ref:
-          type: string
-        id:
-          type: number
-        transaction_date:
-          type: string
-        transaction_amount:
-          type: number
-        event_date:
-          type: string
-        transaction_status:
-          type: string
-        user_id:
-          type: number
-        event_id:
-          type: number
-        title:
-          type: string
-        email:
-          type: string
-          format: email
-        buyer_first_name:
-          type: string
-        buyer_last_name:
-          type: string
-        payment_type:
-          type: string
     CheckinRequest:
       type: object
       required:
@@ -157,20 +108,6 @@ components:
         eventcheckin:
           type: boolean
           description: true to check in, false to revert check-in
-    AttendeesListResponse:
-      type: object
-      properties:
-        attendees:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttendeeListItem'
-    AttendeeDetailResponse:
-      type: object
-      properties:
-        attendees:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttendeeDetail'
     AttendeeDetail:
       type: object
       properties:
@@ -238,6 +175,69 @@ components:
           enum:
           - Checkin
           - Checkout
+    AttendeeListItem:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        ticket_type:
+          type: string
+        bar_code:
+          type: string
+        is_attended:
+          type: string
+        questions:
+          type: array
+          items:
+            type: object
+            properties:
+              questions:
+                type: string
+              answer:
+                type: string
+        transaction_ref:
+          type: string
+        id:
+          type: number
+        transaction_date:
+          type: string
+        transaction_amount:
+          type: number
+        event_date:
+          type: string
+        transaction_status:
+          type: string
+        user_id:
+          type: number
+        event_id:
+          type: number
+        title:
+          type: string
+        email:
+          type: string
+          format: email
+        buyer_first_name:
+          type: string
+        buyer_last_name:
+          type: string
+        payment_type:
+          type: string
+    AttendeesListResponse:
+      type: object
+      properties:
+        attendees:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttendeeListItem'
+    AttendeeDetailResponse:
+      type: object
+      properties:
+        attendees:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttendeeDetail'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

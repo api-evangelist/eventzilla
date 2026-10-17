@@ -43,6 +43,17 @@ paths:
                 $ref: '#/components/schemas/TicketsResponse'
 components:
   schemas:
+    TicketsResponse:
+      type: object
+      properties:
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ticket'
+        donation:
+          type: array
+          items:
+            $ref: '#/components/schemas/Donation'
     Donation:
       type: object
       properties:
@@ -62,17 +73,6 @@ components:
         donation_end_date:
           type: string
           format: date-time
-    TicketsResponse:
-      type: object
-      properties:
-        tickets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Ticket'
-        donation:
-          type: array
-          items:
-            $ref: '#/components/schemas/Donation'
     Ticket:
       type: object
       properties:
