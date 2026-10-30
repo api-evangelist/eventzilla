@@ -64,28 +64,167 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Eventzilla is an event registration and ticketing platform with a REST API for managing events, ticket types, registrations, discounts, and attendee check-in workflows.
+Eventzilla is an event registration and ticketing platform that provides a REST API for managing events, ticket types, registrations, discounts, and attendee check-in workflows. The API uses predictable, resource-oriented URLs organized around the JSON format, enabling integrations for event creation, attendee management, order processing, and check-in operations.
 
-## API
+**Areas:** Event · Ticketing · Registration · Attendees · Event Management
 
-- **Base URL:** `https://www.eventzillaapi.net/api/v2/`
-- **Authentication:** API key via `x-api-key` request header
-- **Format:** JSON
-- **Developer Portal:** https://developer.eventzilla.net/docs/
+## Eventzilla on APIs.io
 
-## Resources
+Everything profiled for Eventzilla is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/eventzilla/](https://apis.io/providers/eventzilla/)** — or go straight to one of the APIs or properties below.
 
-- [API Reference](https://developer.eventzilla.net/docs/)
+### APIs (7)
+
+- [Eventzilla Attendees API](https://apis.io/apis/eventzilla/eventzilla-attendees-api/) — Attendee management and check-in operations
+- [Eventzilla Categories API](https://apis.io/apis/eventzilla/eventzilla-categories-api/) — Event category operations
+- [Eventzilla Checkout API](https://apis.io/apis/eventzilla/eventzilla-checkout-api/) — Checkout workflow operations
+- [Eventzilla Events API](https://apis.io/apis/eventzilla/eventzilla-events-api/) — Event listing and detail operations
+- [Eventzilla Tickets API](https://apis.io/apis/eventzilla/eventzilla-tickets-api/) — Ticket type operations
+- [Eventzilla Transactions API](https://apis.io/apis/eventzilla/eventzilla-transactions-api/) — Transaction and order operations
+- [Eventzilla Users API](https://apis.io/apis/eventzilla/eventzilla-users-api/) — Organizer and sub-organizer operations
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Eventzilla Agentic Access](https://apis.io/agentic-access/eventzilla/eventzilla-agentic-access/)
+
+#### JSON Schema (5)
+
+The data models the API reads and writes.
+
+- [Attendee](https://apis.io/schemas/eventzilla/attendee/)
+- [Event](https://apis.io/schemas/eventzilla/event/)
+- [Ticket](https://apis.io/schemas/eventzilla/ticket/)
+- [Transaction](https://apis.io/schemas/eventzilla/transaction/)
+- [User](https://apis.io/schemas/eventzilla/user/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [context Context](https://apis.io/jsonld/eventzilla/context/)
+
+#### Examples (5)
+
+Example requests and responses.
+
+- [Checkin Request](https://apis.io/examples/eventzilla/checkin-request/)
+- [Checkin Response](https://apis.io/examples/eventzilla/checkin-response/)
+- [Checkout Create Request](https://apis.io/examples/eventzilla/checkout-create-request/)
+- [Checkout Create Response](https://apis.io/examples/eventzilla/checkout-create-response/)
+- [List Events](https://apis.io/examples/eventzilla/list-events/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [Eventzilla Attendees API](https://apis.io/collections/eventzilla/open-eventzilla-attendees-api/)
+- [Eventzilla Attendees Categories API](https://apis.io/collections/eventzilla/open-eventzilla-categories-api/)
+- [Eventzilla Attendees Checkout API](https://apis.io/collections/eventzilla/open-eventzilla-checkout-api/)
+- [Eventzilla Attendees Events API](https://apis.io/collections/eventzilla/open-eventzilla-events-api/)
+- [Eventzilla Attendees Tickets API](https://apis.io/collections/eventzilla/open-eventzilla-tickets-api/)
+- [Eventzilla Attendees Transactions API](https://apis.io/collections/eventzilla/open-eventzilla-transactions-api/)
+- [Eventzilla Attendees Users API](https://apis.io/collections/eventzilla/open-eventzilla-users-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Eventzilla — jsonschema rules](https://apis.io/rules/eventzilla/eventzilla-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Eventzilla Authentication](https://apis.io/security/eventzilla/eventzilla-authentication/)
+- [Eventzilla Domain Security](https://apis.io/security/eventzilla/eventzilla-domain-security/)
+
+#### Plans and pricing (4)
+
+Published plans, tiers and prices.
+
+- [Basic](https://apis.io/plans/eventzilla/basic/)
+- [Plus](https://apis.io/plans/eventzilla/plus/)
+- [Pro](https://apis.io/plans/eventzilla/pro/)
+- [Unlimited](https://apis.io/plans/eventzilla/unlimited/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Default](https://apis.io/rate-limits/eventzilla/default/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Overview](https://apis.io/finops/eventzilla/overview/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.eventzilla.net/)
+- [Documentation](https://developer.eventzilla.net/docs/)
 - [Pricing](https://www.eventzilla.net/pricing/)
+- [Support](https://community.eventzilla.net/)
 - [Blog](https://www.eventzilla.net/blog/)
-- [Support Community](https://community.eventzilla.net/)
-- [Terms of Service](https://www.eventzilla.net/terms-conditions/)
+- [Terms of service](https://www.eventzilla.net/terms-conditions/)
+- [Privacy policy](https://www.eventzilla.net/privacy-policy/)
 
-## Plans
+## API Evangelist rating
 
-| Plan | Fee |
-|------|-----|
-| Basic | $1.50 per paid registration |
-| Pro | 1.9% + $1.50 per paid registration |
-| Plus | 2.9% + $1.50 per paid registration |
-| Unlimited | Starting at $5,999/year |
+**Kin Score 35.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 54.2 |
+| Contract governance | 9.8 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 38.1 |
+| Access clarity | 27.6 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/eventzilla/](https://apis.io/providers/eventzilla/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Eventzilla: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/eventzilla/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
